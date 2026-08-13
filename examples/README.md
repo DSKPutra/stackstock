@@ -1,6 +1,6 @@
 # Examples
 
-Runnable scripts demonstrating the `@stockpackz/sdk` surface. Each example is self-contained and typed.
+Runnable scripts demonstrating the `@stackstock/sdk` surface. Each example is self-contained and typed.
 
 | Example | What it shows |
 | --- | --- |

@@ -5,7 +5,7 @@ body:
     id: idea
     attributes:
       label: The idea
-      description: What should StockPackz do, and who benefits?
+      description: What should StackStock do, and who benefits?
     validations:
       required: true
   - type: textarea

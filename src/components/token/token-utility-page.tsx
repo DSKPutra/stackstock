@@ -6,7 +6,7 @@ import { Check, Flame, Key, Lock, Sparkles, Vault } from "lucide-react";
 import { useAccount, useReadContract } from "wagmi";
 import { SiteNav } from "@/components/capsules/site-nav";
 import { PageBackground } from "@/components/capsules/page-background";
-import { StockpackzLogo } from "@/components/brand/stockpackz-logo";
+import { StackstockLogo } from "@/components/brand/stackstock-logo";
 import {
   BURN_ECONOMICS,
   LEVEL_CURVE,
@@ -308,7 +308,7 @@ export function TokenUtilityPage() {
             </h3>
             <p className="mt-2 text-sm leading-relaxed text-white/45">
               Holders pay {formatCurrency(PACK_ECONOMICS.price)} + approximately{" "}
-              {formatCurrency(BURN_ECONOMICS.burnUsd)} of STOCKPACKZ, burned forever. Non-holders
+              {formatCurrency(BURN_ECONOMICS.burnUsd)} of STACKSTOCK, burned forever. Non-holders
               pay {formatCurrency(BURN_ECONOMICS.nonHolderTotal)} with no burn. The burn quantity
               tracks the live token price through an oracle — never a fixed amount.
             </p>
@@ -430,7 +430,7 @@ export function TokenUtilityPage() {
 
       <footer className="border-t border-white/[0.05] py-10">
         <div className="mx-auto flex max-w-6xl flex-col items-center gap-4 px-5 sm:px-8">
-          <StockpackzLogo variant="full" href="/" className="h-10 w-auto opacity-80" />
+          <StackstockLogo variant="full" href="/" className="h-10 w-auto opacity-80" />
         </div>
       </footer>
     </div>

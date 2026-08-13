@@ -5,9 +5,9 @@
  * same verifiable randomness that selects the stock: roll < threshold wins,
  * paying 90% of the vault and retaining 10% as the next seed.
  */
-import { StockPackzClient, NotDeployedError } from "@stockpackz/sdk";
+import { StackStockClient, NotDeployedError } from "@stackstock/sdk";
 
-const client = new StockPackzClient({ chain: "robinhood" });
+const client = new StackStockClient({ chain: "robinhood" });
 
 async function main() {
   const jackpot = await client.jackpot.get();

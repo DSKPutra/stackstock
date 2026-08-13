@@ -124,7 +124,7 @@ export function HeroPackFan() {
           >
             <Image
               src={getCapsuleArtwork(pack.id)}
-              alt={`${pack.id} StockPack`}
+              alt={`${pack.id} StackStock`}
               fill
               priority={pack.id === "ai"}
               className="object-contain drop-shadow-[0_36px_70px_rgba(0,0,0,0.85)]"

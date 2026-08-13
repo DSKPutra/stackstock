@@ -1,6 +1,6 @@
 # Backend Integration
 
-StockPackz is **live on Robinhood Chain mainnet** (chain ID 4663). This document describes what is wired today and what remains for later phases.
+StackStock is **live on Robinhood Chain mainnet** (chain ID 4663). This document describes what is wired today and what remains for later phases.
 
 ## Current State
 
@@ -10,7 +10,7 @@ StockPackz is **live on Robinhood Chain mainnet** (chain ID 4663). This document
 | Stock logos (FMP CDN) | ✅ Live |
 | Wallet connection (wagmi, chain 4663) | ✅ Live (`src/lib/chain.ts`, `wallet-button.tsx`) |
 | Pack opening UI (cinematic) | ✅ Live — wallet payment first, then reveal |
-| On-chain settlement | ✅ Live — `StockPackz.openPack` + Uniswap v4 + keeper randomness |
+| On-chain settlement | ✅ Live — `StackStock.openPack` + Uniswap v4 + keeper randomness |
 | Live prices | ✅ Live — Uniswap v4 pool prices via `/api/stocks` |
 | Live Openings feed | ✅ Live — indexed from `StockPurchased` / `JackpotWon` events |
 | Jackpot counter | ✅ Live — `$300` base pot + on-chain vault via `/api/jackpot` |
@@ -24,7 +24,7 @@ StockPackz is **live on Robinhood Chain mainnet** (chain ID 4663). This document
 ┌─────────────┐     ┌──────────────────┐     ┌─────────────────────────────┐
 │  Next.js    │────▶│  API Routes      │────▶│  Robinhood Chain (4663)     │
 │  Frontend   │     │  /api/activity   │     │                             │
-│  wagmi/viem │     │  /api/jackpot    │     │  StockPackz core            │
+│  wagmi/viem │     │  /api/jackpot    │     │  StackStock core            │
 └──────┬──────┘     │  /api/stocks     │     │  UniswapV4NativeAdapter     │
        │            │  /api/keeper     │     │  KeeperRandomnessCoordinator│
        │            └──────────────────┘     │  Tokenized stock ERC-20s    │

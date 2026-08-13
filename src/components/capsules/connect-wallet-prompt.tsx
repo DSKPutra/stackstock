@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { WalletButton } from "./wallet-button";
-import { StockpackzLogo } from "@/components/brand/stockpackz-logo";
+import { StackstockLogo } from "@/components/brand/stackstock-logo";
 
 interface ConnectWalletPromptProps {
   onClose?: () => void;
@@ -16,7 +16,7 @@ export function ConnectWalletPrompt({ onClose }: ConnectWalletPromptProps) {
       className="relative w-full overflow-hidden rounded-3xl bg-white/[0.04] p-10 text-center backdrop-blur-2xl"
     >
       <div className="relative">
-        <StockpackzLogo variant="icon" className="mx-auto h-14 w-14" />
+        <StackstockLogo variant="icon" className="mx-auto h-14 w-14" />
         <h3 className="mt-6 text-2xl font-semibold tracking-tight text-white">Connect to open</h3>
         <p className="mx-auto mt-3 max-w-sm text-sm leading-relaxed text-white/40">
           Connect your wallet on Robinhood Chain to open packs and receive tokenized stocks.

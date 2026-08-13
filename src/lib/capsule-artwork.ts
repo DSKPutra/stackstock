@@ -12,8 +12,8 @@ export const HERO_GRAPHICS = {
   pack: "/graphics/capsule-ai-v5.png",
   capsule: "/graphics/hero-capsule-v3.png",
   texture: "/graphics/hero-bg-texture.png",
-  logo: "/graphics/stockpackz-logo-v5.png",
-  icon: "/graphics/stockpackz-icon-v5.png",
+  logo: "/graphics/stackstock-logo-v5.png",
+  icon: "/graphics/stackstock-icon-v5.png",
 } as const;
 
 export function getCapsuleArtwork(capsuleId: string): string {

@@ -1,6 +1,6 @@
 # Tokenized Stocks
 
-Stockpackz uses **real Robinhood Chain stock tokens** — standard ERC-20 contracts (with ERC-8056 extensions) that represent tokenized exposure to underlying equities and ETFs.
+Stackstock uses **real Robinhood Chain stock tokens** — standard ERC-20 contracts (with ERC-8056 extensions) that represent tokenized exposure to underlying equities and ETFs.
 
 ## What is a Robinhood Stock Token?
 

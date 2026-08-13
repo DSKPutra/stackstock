@@ -18,11 +18,11 @@ import { FinalCta } from "@/components/capsules/final-cta";
 import { PageBackground } from "@/components/capsules/page-background";
 import { SiteNav } from "@/components/capsules/site-nav";
 import { useWalletReady } from "@/components/capsules/wallet-button";
-import { StockpackzLogo } from "@/components/brand/stockpackz-logo";
+import { StackstockLogo } from "@/components/brand/stackstock-logo";
 import { StockTickerStrip } from "@/components/stocks/stock-ticker-strip";
 import { StockWatchlist } from "@/components/stocks/stock-watchlist";
 
-export default function StockpackzPage() {
+export default function StackstockPage() {
   const walletReady = useWalletReady();
   const [flowOpen, setFlowOpen] = useState(false);
   const [selectedCapsule, setSelectedCapsule] = useState<CapsuleType | null>(null);
@@ -68,21 +68,21 @@ export default function StockpackzPage() {
       <footer className="border-t border-white/[0.04] px-6 py-16 sm:px-10 lg:px-16">
         <div className="mx-auto max-w-7xl">
           <div className="flex justify-center">
-            <StockpackzLogo variant="full" href="/" className="w-[180px]" />
+            <StackstockLogo variant="full" href="/" className="w-[180px]" />
           </div>
           <p className="mx-auto mt-10 max-w-2xl text-center text-sm leading-relaxed text-white/35">
-            Every StockPack purchases real tokenized equities on Robinhood Chain through Uniswap
+            Every StackStock purchases real tokenized equities on Robinhood Chain through Uniswap
             v4. No inventory. No IOUs. Every opening settles directly into your wallet.
           </p>
           <p className="mx-auto mt-6 max-w-2xl text-center text-xs leading-relaxed text-white/25">
-            StockPackz is an independent, community-built application deployed on Robinhood Chain
+            StackStock is an independent, community-built application deployed on Robinhood Chain
             (chain ID 4663). It is not affiliated with, endorsed by, sponsored by, or operated by
             Robinhood Markets, Inc. or any of its subsidiaries. &ldquo;Robinhood&rdquo; is a
             trademark of its respective owner and is referenced here only to identify the public
             blockchain network. Trading tokenized assets involves risk, including loss of principal.
           </p>
           <div className="mt-12 flex flex-col items-center justify-between gap-6 sm:flex-row">
-            <StockpackzLogo variant="wordmark" href="/" className="h-5 w-auto opacity-60" />
+            <StackstockLogo variant="wordmark" href="/" className="h-5 w-auto opacity-60" />
             <p className="text-xs text-white/25">
               Built on Robinhood Chain ·{" "}
               <Link href="/docs" className="text-white/40 transition-colors hover:text-white/60">
@@ -90,16 +90,16 @@ export default function StockpackzPage() {
               </Link>{" "}
               ·{" "}
               <a
-                href="https://x.com/stockpackz"
+                href="https://x.com/stackstock"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white/40 transition-colors hover:text-white/60"
               >
-                @stockpackz
+                @stackstock
               </a>{" "}
               ·{" "}
               <a
-                href="https://github.com/stockpackz/stockpackz"
+                href="https://github.com/DSKPutra/stackstock"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white/40 transition-colors hover:text-white/60"

@@ -2,10 +2,10 @@
 pragma solidity ^0.8.26;
 
 import {BaseTest} from "./Base.t.sol";
-import {StockPackz} from "../src/StockPackz.sol";
+import {StackStock} from "../src/StackStock.sol";
 import {MockSwapAdapter} from "../src/mocks/MockSwapAdapter.sol";
 
-contract StockPackzCoreTest is BaseTest {
+contract StackStockCoreTest is BaseTest {
     // ------------------------------------------------- weighted selection
 
     function test_weightedSelection_boundaries() public {
@@ -30,7 +30,7 @@ contract StockPackzCoreTest is BaseTest {
         uint256 openingId = _open(alice);
         // Payment committed, randomness pending — no stock chosen yet.
         assertEq(_selectedStock(openingId), address(0));
-        assertEq(uint8(_status(openingId)), uint8(StockPackz.OpeningStatus.RandomnessRequested));
+        assertEq(uint8(_status(openingId)), uint8(StackStock.OpeningStatus.RandomnessRequested));
     }
 
     // ------------------------------------------------------- fee split
@@ -38,7 +38,7 @@ contract StockPackzCoreTest is BaseTest {
     function test_feeSplit_exact() public {
         uint256 openingId = _openAndFulfill(alice, 0, 999);
 
-        assertEq(uint8(_status(openingId)), uint8(StockPackz.OpeningStatus.Settled));
+        assertEq(uint8(_status(openingId)), uint8(StackStock.OpeningStatus.Settled));
         assertEq(core.treasuryAccrued(), FEE);
         assertEq(core.jackpotBalance(), JACKPOT_CUT);
         assertEq(core.pendingLiabilities(), 0);
@@ -48,18 +48,18 @@ contract StockPackzCoreTest is BaseTest {
     }
 
     function test_invalidSplit_rejected() public {
-        StockPackz.PackConfig memory config = _packConfig();
+        StackStock.PackConfig memory config = _packConfig();
         config.protocolFee = FEE + 1; // split no longer sums to price
         vm.prank(admin);
-        vm.expectRevert(StockPackz.InvalidSplit.selector);
+        vm.expectRevert(StackStock.InvalidSplit.selector);
         core.createPack(config, _aiPackOptions());
     }
 
     function test_invalidWeights_rejected() public {
-        StockPackz.StockOption[] memory options = _aiPackOptions();
+        StackStock.StockOption[] memory options = _aiPackOptions();
         options[0].weight = 1_999; // sum = 9,999
         vm.prank(admin);
-        vm.expectRevert(StockPackz.InvalidWeights.selector);
+        vm.expectRevert(StackStock.InvalidWeights.selector);
         core.createPack(_packConfig(), options);
     }
 
@@ -139,7 +139,7 @@ contract StockPackzCoreTest is BaseTest {
         uint256 openingId = _open(alice);
 
         // Admin swaps the pack to 100% PLTR after alice paid.
-        StockPackz.StockOption[] memory newOptions = new StockPackz.StockOption[](1);
+        StackStock.StockOption[] memory newOptions = new StackStock.StockOption[](1);
         newOptions[0] = _option(address(pltr), 10_000);
         vm.prank(admin);
         core.updatePack(aiPackId, _packConfig(), newOptions);
@@ -161,7 +161,7 @@ contract StockPackzCoreTest is BaseTest {
         adapter.setFailSwaps(true);
         uint256 openingId = _openAndFulfill(alice, 0, 999);
 
-        assertEq(uint8(_status(openingId)), uint8(StockPackz.OpeningStatus.SettlementFailed));
+        assertEq(uint8(_status(openingId)), uint8(StackStock.OpeningStatus.SettlementFailed));
         // Nothing finalized: no fee, no jackpot, liability still open.
         assertEq(core.treasuryAccrued(), 0);
         assertEq(core.jackpotBalance(), 0);
@@ -178,7 +178,7 @@ contract StockPackzCoreTest is BaseTest {
         vm.prank(alice);
         core.retrySettlement(openingId, 200);
 
-        assertEq(uint8(_status(openingId)), uint8(StockPackz.OpeningStatus.Settled));
+        assertEq(uint8(_status(openingId)), uint8(StackStock.OpeningStatus.Settled));
         assertEq(nvda.balanceOf(alice), EXPECTED_OUT);
         assertEq(core.treasuryAccrued(), FEE);
         assertEq(core.jackpotBalance(), JACKPOT_CUT);
@@ -192,7 +192,7 @@ contract StockPackzCoreTest is BaseTest {
         vm.prank(alice);
         core.refundOpening(openingId);
 
-        assertEq(uint8(_status(openingId)), uint8(StockPackz.OpeningStatus.Refunded));
+        assertEq(uint8(_status(openingId)), uint8(StackStock.OpeningStatus.Refunded));
         assertEq(usdg.balanceOf(alice), before + PRICE);
         assertEq(core.pendingLiabilities(), 0);
     }
@@ -201,7 +201,7 @@ contract StockPackzCoreTest is BaseTest {
         adapter.setFailSwaps(true);
         uint256 openingId = _openAndFulfill(alice, 0, 999);
         vm.prank(bob);
-        vm.expectRevert(StockPackz.NotOpener.selector);
+        vm.expectRevert(StackStock.NotOpener.selector);
         core.refundOpening(openingId);
     }
 
@@ -211,20 +211,20 @@ contract StockPackzCoreTest is BaseTest {
         vm.prank(alice);
         core.refundOpening(openingId);
         vm.prank(alice);
-        vm.expectRevert(StockPackz.WrongStatus.selector);
+        vm.expectRevert(StackStock.WrongStatus.selector);
         core.refundOpening(openingId);
     }
 
     function test_shallowLiquidity_failsSettlement() public {
         adapter.setShallowLiquidity(true); // quotes collapse below minimumQuote
         uint256 openingId = _openAndFulfill(alice, 0, 999);
-        assertEq(uint8(_status(openingId)), uint8(StockPackz.OpeningStatus.SettlementFailed));
+        assertEq(uint8(_status(openingId)), uint8(StackStock.OpeningStatus.SettlementFailed));
     }
 
     function test_deliveryShortfall_failsSettlement() public {
         adapter.setDeliveryShortfallBps(500); // adapter lies about output
         uint256 openingId = _openAndFulfill(alice, 0, 999);
-        assertEq(uint8(_status(openingId)), uint8(StockPackz.OpeningStatus.SettlementFailed));
+        assertEq(uint8(_status(openingId)), uint8(StackStock.OpeningStatus.SettlementFailed));
     }
 
     function test_expiredSwap_failsSettlement() public {
@@ -250,14 +250,14 @@ contract StockPackzCoreTest is BaseTest {
         uint256[] memory words = new uint256[](2);
         words[0] = 5_000;
         words[1] = 0;
-        vm.expectRevert(StockPackz.UnknownRequest.selector);
+        vm.expectRevert(StackStock.UnknownRequest.selector);
         coordinator.fulfill(requestOf[openingId], words);
     }
 
     function test_onlyCoordinatorCanFulfill() public {
         uint256 openingId = _open(alice);
         uint256[] memory words = new uint256[](2);
-        vm.expectRevert(StockPackz.NotCoordinator.selector);
+        vm.expectRevert(StackStock.NotCoordinator.selector);
         core.rawFulfillRandomness(requestOf[openingId], words);
     }
 
@@ -265,7 +265,7 @@ contract StockPackzCoreTest is BaseTest {
         uint256 openingId = _open(alice);
 
         vm.prank(alice);
-        vm.expectRevert(StockPackz.TimeoutNotReached.selector);
+        vm.expectRevert(StackStock.TimeoutNotReached.selector);
         core.cancelExpiredOpening(openingId);
 
         vm.warp(block.timestamp + 24 hours + 1);
@@ -273,12 +273,12 @@ contract StockPackzCoreTest is BaseTest {
         vm.prank(alice);
         core.cancelExpiredOpening(openingId);
 
-        assertEq(uint8(_status(openingId)), uint8(StockPackz.OpeningStatus.CancelledAndRefunded));
+        assertEq(uint8(_status(openingId)), uint8(StackStock.OpeningStatus.CancelledAndRefunded));
         assertEq(usdg.balanceOf(alice), before + PRICE);
 
         // Stale randomness arriving after cancellation is rejected.
         uint256[] memory words = new uint256[](2);
-        vm.expectRevert(StockPackz.UnknownRequest.selector);
+        vm.expectRevert(StackStock.UnknownRequest.selector);
         coordinator.fulfill(requestOf[openingId], words);
     }
 
@@ -298,24 +298,24 @@ contract StockPackzCoreTest is BaseTest {
         // User exit paths keep working while paused.
         vm.prank(alice);
         core.refundOpening(openingId);
-        assertEq(uint8(_status(openingId)), uint8(StockPackz.OpeningStatus.Refunded));
+        assertEq(uint8(_status(openingId)), uint8(StackStock.OpeningStatus.Refunded));
     }
 
     function test_slippageCap_enforced() public {
         vm.prank(alice);
-        vm.expectRevert(StockPackz.SlippageTooHigh.selector);
+        vm.expectRevert(StackStock.SlippageTooHigh.selector);
         core.openPack(aiPackId, 1_001, 0);
     }
 
     function test_gateToken_restriction() public {
-        StockPackz.PackConfig memory config = _packConfig();
+        StackStock.PackConfig memory config = _packConfig();
         config.gateToken = address(pltr);
         config.gateMinBalance = 5e18;
         vm.prank(admin);
         uint256 gatedId = core.createPack(config, _aiPackOptions());
 
         vm.prank(alice);
-        vm.expectRevert(StockPackz.GateNotSatisfied.selector);
+        vm.expectRevert(StackStock.GateNotSatisfied.selector);
         core.openPack(gatedId, 100, 0);
 
         pltr.mint(alice, 5e18);
@@ -324,13 +324,13 @@ contract StockPackzCoreTest is BaseTest {
     }
 
     function test_timeWindow_restriction() public {
-        StockPackz.PackConfig memory config = _packConfig();
+        StackStock.PackConfig memory config = _packConfig();
         config.startsAt = uint64(block.timestamp + 1 days);
         vm.prank(admin);
         uint256 futureId = core.createPack(config, _aiPackOptions());
 
         vm.prank(alice);
-        vm.expectRevert(StockPackz.PackNotOpen.selector);
+        vm.expectRevert(StackStock.PackNotOpen.selector);
         core.openPack(futureId, 100, 0);
 
         vm.warp(block.timestamp + 1 days + 1);
@@ -343,7 +343,7 @@ contract StockPackzCoreTest is BaseTest {
     function test_feeOnTransferUSDG_rejected() public {
         usdg.setFeeOnTransferBps(100);
         vm.prank(alice);
-        vm.expectRevert(StockPackz.FeeOnTransferNotSupported.selector);
+        vm.expectRevert(StackStock.FeeOnTransferNotSupported.selector);
         core.openPack(aiPackId, 100, 0);
     }
 
@@ -355,7 +355,7 @@ contract StockPackzCoreTest is BaseTest {
         // Contract holds 2 × (fee + jackpot); only 2 × fee is withdrawable.
 
         vm.prank(admin);
-        vm.expectRevert(StockPackz.NothingToWithdraw.selector);
+        vm.expectRevert(StackStock.NothingToWithdraw.selector);
         core.withdrawTreasury(admin, 2 * FEE + 1);
 
         vm.prank(admin);
@@ -376,7 +376,7 @@ contract StockPackzCoreTest is BaseTest {
         core.withdrawTreasury(admin, FEE);
 
         vm.prank(admin);
-        vm.expectRevert(StockPackz.NothingToWithdraw.selector);
+        vm.expectRevert(StackStock.NothingToWithdraw.selector);
         core.withdrawTreasury(admin, 1);
     }
 
@@ -391,7 +391,7 @@ contract StockPackzCoreTest is BaseTest {
 
         // Opening settles through the adapter it was created with.
         _fulfill(openingId, 0, 999);
-        assertEq(uint8(_status(openingId)), uint8(StockPackz.OpeningStatus.Settled));
+        assertEq(uint8(_status(openingId)), uint8(StackStock.OpeningStatus.Settled));
         assertEq(nvda.balanceOf(alice), EXPECTED_OUT);
     }
 

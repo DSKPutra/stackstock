@@ -1,6 +1,6 @@
 # Security Model
 
-StockPackz is designed so that the safest path is the default path: user funds are either converted into stock or returned, and no privileged role can change that.
+StackStock is designed so that the safest path is the default path: user funds are either converted into stock or returned, and no privileged role can change that.
 
 ## Principles
 
@@ -28,5 +28,5 @@ Pausing stops new pack openings. It cannot stop users from refunding failed open
 ## Related documents
 
 - [Threat Model](12-threat-model.md) — attacker-by-attacker analysis
-- Repository [SECURITY.md](https://github.com/stockpackz/stockpackz/blob/main/SECURITY.md) — disclosure policy
-- [AUDIT_SCOPE.md](https://github.com/stockpackz/stockpackz/blob/main/AUDIT_SCOPE.md) — invariants for review
+- Repository [SECURITY.md](https://github.com/DSKPutra/stackstock/blob/main/SECURITY.md) — disclosure policy
+- [AUDIT_SCOPE.md](https://github.com/DSKPutra/stackstock/blob/main/AUDIT_SCOPE.md) — invariants for review

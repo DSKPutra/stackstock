@@ -3,8 +3,8 @@ import path from "path";
 import { DocsViewer, type DocSection } from "@/components/docs/docs-viewer";
 
 export const metadata = {
-  title: "Documentation | Stockpackz",
-  description: "In-depth documentation for Stockpackz on Robinhood Chain",
+  title: "Documentation | Stackstock",
+  description: "In-depth documentation for Stackstock on Robinhood Chain",
 };
 
 const DOC_FILES = [

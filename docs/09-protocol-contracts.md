@@ -1,6 +1,6 @@
 # Protocol Contracts
 
-The complete on-chain product logic lives in `contracts/` (Foundry). StockPackz settles every pack into **real tokenized stocks, just-in-time** — no inventory, no IOUs.
+The complete on-chain product logic lives in `contracts/` (Foundry). StackStock settles every pack into **real tokenized stocks, just-in-time** — no inventory, no IOUs.
 
 ## Core economics
 
@@ -16,9 +16,9 @@ All amounts are admin-configurable per pack, but the split must always sum to th
 
 ## Contract map
 
-- **`StockPackz.sol`** — pack configs, the opening state machine, jackpot vault, liability-aware treasury.
+- **`StackStock.sol`** — pack configs, the opening state machine, jackpot vault, liability-aware treasury.
 - **`adapters/UniswapV4Adapter.sol`** — `IStockSwapAdapter` implementation with a token allowlist, per-pair enable flags, and liquidity floors. The core depends only on the interface, so routing is replaceable.
-- **`token/StockPackzToken.sol`** — optional membership token, 1% transfer tax split 50/50 into the Pack Rewards and Jackpot Support vaults. No reflections, no buyback, no swap-on-transfer.
+- **`token/StackStockToken.sol`** — optional membership token, 1% transfer tax split 50/50 into the Pack Rewards and Jackpot Support vaults. No reflections, no buyback, no swap-on-transfer.
 - **`vaults/TaxVaultConverter.sol`** — keeper batch-converts taxed tokens → USDG (bounded slippage/deadline) and forwards to the jackpot or Pack Credits.
 - **`credits/PackCredits.sol`** — non-transferable USDG-denominated credits, weekly epochs, holding tiers, fully backed 1:1. A free pack is still a fully funded pack.
 - **`badges/CollectionBadges.sol`** — soulbound achievement NFTs, claimed once per wallet after on-chain balance verification.

@@ -4,9 +4,9 @@
  * XP is awarded only after a stock purchase settles on-chain — failed and
  * refunded openings never earn XP, so these numbers are proof of settled volume.
  */
-import { StockPackzClient, NotDeployedError } from "@stockpackz/sdk";
+import { StackStockClient, NotDeployedError } from "@stackstock/sdk";
 
-const client = new StockPackzClient({ chain: "robinhood" });
+const client = new StackStockClient({ chain: "robinhood" });
 
 async function main() {
   const wallet = "0x0000000000000000000000000000000000000001";

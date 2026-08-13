@@ -21,7 +21,7 @@ interface ICreditsSink {
 ///         the Jackpot Support Vault) and lets an authorized keeper batch-convert
 ///         them into USDG through a configured adapter — never on transfer.
 ///         Converted USDG is forwarded to its destination:
-///           - JACKPOT  → StockPackz.fundJackpot
+///           - JACKPOT  → StackStock.fundJackpot
 ///           - CREDITS  → PackCredits.fundCredits
 contract TaxVaultConverter is AccessControl, ReentrancyGuard {
     using SafeERC20 for IERC20;

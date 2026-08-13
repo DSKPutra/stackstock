@@ -14,7 +14,7 @@ export function StockUniverseCloud() {
         <div className="grid items-center gap-16 lg:grid-cols-2">
           <SectionHeader
             title="14 Companies. One Chain."
-            description="Drag the cloud. Every logo is a real tokenized stock you can pull from a StockPack."
+            description="Drag the cloud. Every logo is a real tokenized stock you can pull from a StackStock."
           />
 
           <BlurFade inView delay={0.1}>

@@ -6,7 +6,7 @@ import { Check, ChevronDown, Copy, LogOut, Pencil, Sparkles, Trophy } from "luci
 import { truncateAddress } from "./wallet-button";
 
 function storageKey(address: string) {
-  return `stockpackz:name:${address.toLowerCase()}`;
+  return `stackstock:name:${address.toLowerCase()}`;
 }
 
 function avatarGradient(address: string) {

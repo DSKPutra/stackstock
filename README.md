@@ -1,18 +1,18 @@
 <div align="center">
 
-<img src=".github/assets/banner.png" alt="StockPackz" width="100%" />
+<img src=".github/assets/banner.png" alt="StackStock" width="100%" />
 
 <br />
 <br />
 
 **Open. Own. Invest.**
 
-Every StockPack settles into real tokenized stocks on Robinhood Chain — just-in-time, verifiably random, directly to your wallet.
+Every StackStock settles into real tokenized stocks on Robinhood Chain — just-in-time, verifiably random, directly to your wallet.
 
 <br />
 
-[![CI](https://img.shields.io/github/actions/workflow/status/stockpackz/stockpackz/contracts.yml?branch=main&label=contracts&logo=githubactions&logoColor=white&style=flat-square)](https://github.com/stockpackz/stockpackz/actions/workflows/contracts.yml)
-[![Frontend](https://img.shields.io/github/actions/workflow/status/stockpackz/stockpackz/frontend.yml?branch=main&label=frontend&logo=nextdotjs&logoColor=white&style=flat-square)](https://github.com/stockpackz/stockpackz/actions/workflows/frontend.yml)
+[![CI](https://img.shields.io/github/actions/workflow/status/DSKPutra/stackstock/contracts.yml?branch=main&label=contracts&logo=githubactions&logoColor=white&style=flat-square)](https://github.com/DSKPutra/stackstock/actions/workflows/contracts.yml)
+[![Frontend](https://img.shields.io/github/actions/workflow/status/DSKPutra/stackstock/frontend.yml?branch=main&label=frontend&logo=nextdotjs&logoColor=white&style=flat-square)](https://github.com/DSKPutra/stackstock/actions/workflows/frontend.yml)
 [![Tests](https://img.shields.io/badge/tests-68%20passing-00c805?style=flat-square&logo=checkmarx&logoColor=white)](contracts/test)
 [![Solidity](https://img.shields.io/badge/solidity-0.8.26-363636?style=flat-square&logo=solidity)](contracts)
 [![Foundry](https://img.shields.io/badge/built%20with-foundry-f5c518?style=flat-square)](https://getfoundry.sh)
@@ -27,9 +27,9 @@ Every StockPack settles into real tokenized stocks on Robinhood Chain — just-i
 
 ---
 
-## What is StockPackz?
+## What is StackStock?
 
-StockPackz is a pack-opening protocol for real equities. A user pays 10 USDG, verifiable randomness selects a company from public, weighted odds, and the protocol purchases that company's tokenized stock through Uniswap v4 — settling directly into the user's wallet. No inventory. No IOUs. No custody.
+StackStock is a pack-opening protocol for real equities. A user pays 10 USDG, verifiable randomness selects a company from public, weighted odds, and the protocol purchases that company's tokenized stock through Uniswap v4 — settling directly into the user's wallet. No inventory. No IOUs. No custody.
 
 ```
 10 USDG in  →  9.00 buys the stock  ·  0.60 protocol  ·  0.40 shared jackpot
@@ -57,7 +57,7 @@ StockPackz is a pack-opening protocol for real equities. A user pays 10 USDG, ve
 
 ```mermaid
 flowchart TD
-    U([User Wallet]) -->|10 USDG| SP[StockPackz Core]
+    U([User Wallet]) -->|10 USDG| SP[StackStock Core]
     SP -->|request| VRF[Verifiable Randomness]
     VRF -->|2 words: selection + jackpot roll| SP
     SP -->|9.00 USDG exact-input swap| ADP[Uniswap v4 Adapter]
@@ -67,7 +67,7 @@ flowchart TD
     SP -->|0.60 USDG| TR[(Treasury)]
     JP -.->|90% payout / 10% seed| U
 
-    TOK[STOCKPACKZ Token] -->|1% transfer tax| TAX{50 / 50}
+    TOK[STACKSTOCK Token] -->|1% transfer tax| TAX{50 / 50}
     TAX --> RW[(Pack Rewards Vault)]
     TAX --> JS[(Jackpot Support Vault)]
     RW -->|funded subsidies & key packs| SP
@@ -86,7 +86,7 @@ A deeper walkthrough lives in [ARCHITECTURE.md](ARCHITECTURE.md) and [docs/](doc
 │   ├── src/            Core, adapters, vaults, membership, progression
 │   └── test/           68 unit + integration tests, deterministic randomness
 ├── src/                Next.js 16 frontend (App Router, Tailwind v4)
-├── sdk/                TypeScript SDK (@stockpackz/sdk)
+├── sdk/                TypeScript SDK (@stackstock/sdk)
 ├── examples/           Runnable SDK examples
 ├── docs/               Protocol documentation (also rendered at /docs)
 └── .github/            CI, issue templates, security policy wiring
@@ -112,9 +112,9 @@ forge test           # full suite, deterministic randomness injection
 **SDK**
 
 ```ts
-import { StockPackzClient } from "@stockpackz/sdk";
+import { StackStockClient } from "@stackstock/sdk";
 
-const client = new StockPackzClient({ chain: "robinhood" });
+const client = new StackStockClient({ chain: "robinhood" });
 
 const pack = await client.packs.get(1n);
 const opening = await client.packs.open({ packId: 1n, maxSlippageBps: 100 });
@@ -154,7 +154,7 @@ Full details in [ROADMAP.md](ROADMAP.md).
 
 ## Community
 
-Follow [@stockpackz on X](https://x.com/stockpackz) for launch updates, pack drops, and jackpot announcements.
+Follow [@stackstock on X](https://x.com/stackstock) for launch updates, pack drops, and jackpot announcements.
 
 **$PACKZ** is live on Robinhood Chain: [`0xaab3d2e25869dd9661e7a886b9a51c02ee6c7777`](https://robinhoodchain.blockscout.com/token/0xaab3d2e25869dd9661e7a886b9a51c02ee6c7777) · [Buy on Flap](https://flap.sh/robinhood/0xaab3d2e25869dd9661e7a886b9a51c02ee6c7777)
 
@@ -164,4 +164,4 @@ Contributions are welcome — read [CONTRIBUTING.md](CONTRIBUTING.md) for setup,
 
 ## License
 
-[MIT](LICENSE) © StockPackz contributors
+[MIT](LICENSE) © StackStock contributors

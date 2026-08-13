@@ -47,7 +47,7 @@ export function MiniPack({
         className={cn("relative shrink-0", sizeMap[size], className)}
       >
         <div className="relative aspect-[3/4.5] drop-shadow-[0_12px_32px_rgba(0,0,0,0.6)]">
-          <Image src={src} alt={label ?? "StockPack"} fill className="object-contain" sizes="160px" />
+          <Image src={src} alt={label ?? "StackStock"} fill className="object-contain" sizes="160px" />
         </div>
       </motion.div>
     );
@@ -80,7 +80,7 @@ export function MiniPack({
         />
         <div className="absolute inset-x-[10%] top-[21%] bottom-[15%] flex flex-col items-center justify-center gap-1 rounded-[3px] border border-white/[0.06] bg-gradient-to-b from-[#101010] to-[#080808]">
           <Image
-            src="/graphics/stockpackz-icon-v5.png"
+            src="/graphics/stackstock-icon-v5.png"
             alt=""
             width={40}
             height={40}

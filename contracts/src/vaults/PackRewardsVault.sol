@@ -17,7 +17,7 @@ import {IPackRewardsVault} from "../interfaces/IPackRewardsVault.sol";
 contract PackRewardsVault is IPackRewardsVault, AccessControl, ReentrancyGuard {
     using SafeERC20 for IERC20;
 
-    bytes32 public constant SPENDER_ROLE = keccak256("SPENDER_ROLE"); // StockPackz core
+    bytes32 public constant SPENDER_ROLE = keccak256("SPENDER_ROLE"); // StackStock core
 
     IERC20 public immutable usdg;
 

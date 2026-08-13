@@ -1,6 +1,6 @@
 # Contributing
 
-Thanks for your interest in StockPackz. This guide gets you from clone to merged PR.
+Thanks for your interest in StackStock. This guide gets you from clone to merged PR.
 
 ## Prerequisites
 
@@ -10,8 +10,8 @@ Thanks for your interest in StockPackz. This guide gets you from clone to merged
 ## Setup
 
 ```bash
-git clone https://github.com/stockpackz/stockpackz.git
-cd stockpackz
+git clone https://github.com/DSKPutra/stackstock.git
+cd stackstock
 
 # Frontend
 npm install

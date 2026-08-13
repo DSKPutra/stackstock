@@ -1,4 +1,4 @@
-export { StockPackzClient, NotDeployedError } from "./client.js";
+export { StackStockClient, NotDeployedError } from "./client.js";
 export type {
   ContractAddresses,
   JackpotState,
@@ -10,6 +10,6 @@ export type {
   Pack,
   PackEconomics,
   StockOption,
-  StockPackzClientConfig,
+  StackStockClientConfig,
   XPProfile,
 } from "./types.js";

@@ -6,7 +6,7 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { SiteNav } from "@/components/capsules/site-nav";
 import { PageBackground } from "@/components/capsules/page-background";
-import { StockpackzLogo } from "@/components/brand/stockpackz-logo";
+import { StackstockLogo } from "@/components/brand/stackstock-logo";
 import { cn } from "@/lib/utils";
 
 export interface DocSection {
@@ -45,7 +45,7 @@ export function DocsViewer({ sections }: DocsViewerProps) {
             Documentation
           </p>
           <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-5xl">
-            How Stockpackz works.
+            How Stackstock works.
           </h1>
           <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-white/45">
             Everything under the hood — tokenized stocks, verifiable randomness, Uniswap v4
@@ -151,9 +151,9 @@ export function DocsViewer({ sections }: DocsViewerProps) {
       {/* Footer */}
       <footer className="border-t border-white/[0.05] py-10">
         <div className="mx-auto flex max-w-6xl flex-col items-center gap-4 px-5 sm:px-8">
-          <StockpackzLogo variant="full" href="/" className="h-10 w-auto opacity-80" />
+          <StackstockLogo variant="full" href="/" className="h-10 w-auto opacity-80" />
           <p className="max-w-md text-center text-xs leading-relaxed text-white/30">
-            Every StockPack purchases real tokenized equities on Robinhood Chain through Uniswap
+            Every StackStock purchases real tokenized equities on Robinhood Chain through Uniswap
             v4. No inventory. No IOUs.
           </p>
         </div>

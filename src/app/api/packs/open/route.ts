@@ -6,8 +6,8 @@ export const dynamic = "force-dynamic";
 
 /**
  * Opens a pack server-side. The random draw happens here — never on the
- * client — mirroring how production delegates the draw to the StockPackz
- * contract with verifiable randomness (contracts/src/StockPackz.sol).
+ * client — mirroring how production delegates the draw to the StackStock
+ * contract with verifiable randomness (contracts/src/StackStock.sol).
  *
  * Mirrors on-chain economics: 10 USDG in → 9 to the stock swap,
  * 0.60 protocol fee, 0.40 jackpot; independent jackpot roll
@@ -16,7 +16,7 @@ export const dynamic = "force-dynamic";
 export async function POST(request: Request) {
   // Once real contracts are configured, the demo draw is dead code — refuse
   // it outright so no stale client can ever show a fake opening.
-  if (process.env.NEXT_PUBLIC_STOCKPACKZ_ADDRESS) {
+  if (process.env.NEXT_PUBLIC_STACKSTOCK_ADDRESS) {
     return NextResponse.json(
       { error: "Demo openings are disabled — pack openings are live on-chain. Refresh the page." },
       { status: 410 }

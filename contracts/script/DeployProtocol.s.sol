@@ -4,14 +4,14 @@ pragma solidity ^0.8.26;
 import {Script, console} from "forge-std/Script.sol";
 import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-import {StockPackz} from "../src/StockPackz.sol";
+import {StackStock} from "../src/StackStock.sol";
 import {UniswapV4NativeAdapter} from "../src/adapters/UniswapV4NativeAdapter.sol";
 import {KeeperRandomnessCoordinator} from "../src/randomness/KeeperRandomnessCoordinator.sol";
 import {IPoolManager, IStateView} from "../src/interfaces/IUniswapV4.sol";
 import {IRandomnessCoordinator} from "../src/interfaces/IRandomnessCoordinator.sol";
 import {IStockSwapAdapter} from "../src/interfaces/IStockSwapAdapter.sol";
 
-/// @notice Deploys the StockPackz protocol to Robinhood Chain mainnet (4663)
+/// @notice Deploys the StackStock protocol to Robinhood Chain mainnet (4663)
 ///         and configures the two launch packs against verified live pools.
 ///
 ///         Env: DEPLOYER_PK (funded with ETH for gas), optional KEEPER
@@ -50,7 +50,7 @@ contract DeployProtocol is Script {
         adapter.configurePair(USDG, SPCX, 10000, 200, 0);
 
         // 3. Core protocol.
-        StockPackz core = new StockPackz(
+        StackStock core = new StackStock(
             IERC20(USDG),
             IRandomnessCoordinator(address(coordinator)),
             IStockSwapAdapter(address(adapter)),
@@ -68,7 +68,7 @@ contract DeployProtocol is Script {
 
         console.log("KeeperRandomnessCoordinator:", address(coordinator));
         console.log("UniswapV4NativeAdapter:     ", address(adapter));
-        console.log("StockPackz core:            ", address(core));
+        console.log("StackStock core:            ", address(core));
         console.log("");
         console.log("NEXT STEPS:");
         console.log(" 1. usdg.approve(core, 500e6); core.fundJackpot(500e6)  // $500 seed");
@@ -76,15 +76,15 @@ contract DeployProtocol is Script {
         console.log(" 3. Wire the frontend to these addresses");
     }
 
-    function _createAiPack(StockPackz core) internal {
+    function _createAiPack(StackStock core) internal {
         // $9.99 = 9.00 stock + 0.59 fee + 0.40 jackpot
-        StockPackz.StockOption[] memory options = new StockPackz.StockOption[](4);
+        StackStock.StockOption[] memory options = new StackStock.StockOption[](4);
         options[0] = _opt(NVDA, 588); //   legendary
         options[1] = _opt(AMD, 1765); //   epic
         options[2] = _opt(INTC, 5882); //  common
         options[3] = _opt(MU, 1765); //    epic
 
-        StockPackz.PackConfig memory cfg;
+        StackStock.PackConfig memory cfg;
         cfg.name = "AI Pack";
         cfg.description = "The companies building the future of intelligence";
         cfg.price = 9.99e6;
@@ -95,15 +95,15 @@ contract DeployProtocol is Script {
         core.createPack(cfg, options);
     }
 
-    function _createFutureTechPack(StockPackz core) internal {
+    function _createFutureTechPack(StackStock core) internal {
         // $11.99 = 10.79 stock + 0.72 fee + 0.48 jackpot
-        StockPackz.StockOption[] memory options = new StockPackz.StockOption[](4);
+        StackStock.StockOption[] memory options = new StackStock.StockOption[](4);
         options[0] = _opt(NVDA, 1250); //  legendary
         options[1] = _opt(AMD, 3750); //   epic
         options[2] = _opt(SPCX, 1250); //  legendary
         options[3] = _opt(MU, 3750); //    epic
 
-        StockPackz.PackConfig memory cfg;
+        StackStock.PackConfig memory cfg;
         cfg.name = "Future Tech";
         cfg.description = "Semiconductors, space & growth";
         cfg.price = 11.99e6;
@@ -114,8 +114,8 @@ contract DeployProtocol is Script {
         core.createPack(cfg, options);
     }
 
-    function _opt(address token, uint32 weight) internal pure returns (StockPackz.StockOption memory) {
-        return StockPackz.StockOption({
+    function _opt(address token, uint32 weight) internal pure returns (StackStock.StockOption memory) {
+        return StackStock.StockOption({
             token: token,
             weight: weight,
             maxSlippageBps: 500, // 5% protocol cap per stock

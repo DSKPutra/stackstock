@@ -14,7 +14,7 @@ const STEPS = [
   {
     icon: Package,
     title: "Choose",
-    description: "Pick a themed StockPack — AI, Mag7, Dividend, and more.",
+    description: "Pick a themed StackStock — AI, Mag7, Dividend, and more.",
   },
   {
     icon: Sparkles,

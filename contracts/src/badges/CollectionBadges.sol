@@ -68,7 +68,7 @@ contract CollectionBadges is ERC721, AccessControl, ReentrancyGuard {
     error RequirementsNotMet();
     error NonTransferable();
 
-    constructor(address admin) ERC721("StockPackz Collection Badges", "PACKZ-BADGE") {
+    constructor(address admin) ERC721("StackStock Collection Badges", "PACKZ-BADGE") {
         _grantRole(DEFAULT_ADMIN_ROLE, admin);
         _grantRole(COLLECTION_MANAGER_ROLE, admin);
     }

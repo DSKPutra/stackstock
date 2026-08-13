@@ -5,11 +5,11 @@ import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { HERO_GRAPHICS } from "@/lib/capsule-artwork";
 
-interface StockPackVisualProps {
+interface StackStockVisualProps {
   className?: string;
 }
 
-export function StockPackVisual({ className }: StockPackVisualProps) {
+export function StackStockVisual({ className }: StackStockVisualProps) {
   return (
     <div className={cn("relative flex items-center justify-center", className)}>
       <div className="absolute bottom-[-6%] left-1/2 h-20 w-[55%] -translate-x-1/2 rounded-[100%] bg-white/[0.05] blur-2xl" />
@@ -29,7 +29,7 @@ export function StockPackVisual({ className }: StockPackVisualProps) {
           <div className="relative aspect-[3/4.5] drop-shadow-[0_40px_80px_rgba(0,0,0,0.85)]">
             <Image
               src={HERO_GRAPHICS.pack}
-              alt="StockPack"
+              alt="StackStock"
               fill
               priority
               className="object-contain"

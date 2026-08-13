@@ -3,9 +3,9 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 const ASSETS = {
-  full: "/graphics/stockpackz-logo-v5.png",
-  icon: "/graphics/stockpackz-icon-v5.png",
-  wordmark: "/graphics/stockpackz-wordmark-v5.png",
+  full: "/graphics/stackstock-logo-v5.png",
+  icon: "/graphics/stackstock-icon-v5.png",
+  wordmark: "/graphics/stackstock-wordmark-v5.png",
 } as const;
 
 type LogoVariant = keyof typeof ASSETS;
@@ -16,24 +16,24 @@ const sizeMap: Record<LogoVariant, { width: number; height: number; className?: 
   wordmark: { width: 849, height: 120, className: "h-5 w-auto" },
 };
 
-interface StockpackzLogoProps {
+interface StackstockLogoProps {
   variant?: LogoVariant;
   className?: string;
   href?: string;
   priority?: boolean;
 }
 
-export function StockpackzLogo({
+export function StackstockLogo({
   variant = "full",
   className,
   href,
   priority = false,
-}: StockpackzLogoProps) {
+}: StackstockLogoProps) {
   const s = sizeMap[variant];
   const img = (
     <Image
       src={ASSETS[variant]}
-      alt="Stockpackz"
+      alt="Stackstock"
       width={s.width}
       height={s.height}
       priority={priority}
@@ -52,4 +52,4 @@ export function StockpackzLogo({
   return img;
 }
 
-export { ASSETS as STOCKPACKZ_LOGO_ASSETS };
+export { ASSETS as STACKSTOCK_LOGO_ASSETS };

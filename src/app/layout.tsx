@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://stockpackz.xyz"),
-  title: "StockPackz | Robinhood Chain",
+  metadataBase: new URL("https://stackstock.xyz"),
+  title: "StackStock | Robinhood Chain",
   description: "Open packs. Own tokenized stocks on Robinhood Chain.",
   verification: {
     google: "CPI2OLleSPKyC8Rz_RAYrHXWm3ymnPWZEopZgMjuAlk",
@@ -23,19 +23,19 @@ export const metadata: Metadata = {
   icons: {
     // Solid dark icons — transparent PNGs render as unpredictable shapes in
     // tabs, home screens, and pinned sites.
-    icon: "/graphics/stockpackz-touch-icon.png",
+    icon: "/graphics/stackstock-touch-icon.png",
     apple: "/apple-touch-icon.png",
   },
   openGraph: {
-    title: "StockPackz",
+    title: "StackStock",
     description: "Open packs. Own tokenized stocks on Robinhood Chain.",
     images: [{ url: "/graphics/og-image.png", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
-    site: "@stockpackz",
-    creator: "@stockpackz",
-    title: "StockPackz",
+    site: "@stackstock",
+    creator: "@stackstock",
+    title: "StackStock",
     description: "Open packs. Own tokenized stocks on Robinhood Chain.",
     images: ["/graphics/og-image.png"],
   },

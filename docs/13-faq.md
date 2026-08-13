@@ -42,10 +42,10 @@ Deterministic, published benefits: pack discounts (2–7%), funded stock subsidi
 ## Development
 
 **Is the protocol audited?**
-Not yet — see [AUDIT_SCOPE.md](https://github.com/stockpackz/stockpackz/blob/main/AUDIT_SCOPE.md). Do not use with real funds until an audit completes.
+Not yet — see [AUDIT_SCOPE.md](https://github.com/DSKPutra/stackstock/blob/main/AUDIT_SCOPE.md). Do not use with real funds until an audit completes.
 
 **Can I build on it?**
 Yes. The TypeScript SDK (`sdk/`) and runnable examples (`examples/`) are the supported integration surface. Contract interfaces live in `contracts/src/interfaces`.
 
 **How do I report a vulnerability?**
-Privately, via GitHub security advisories — never a public issue. See [SECURITY.md](https://github.com/stockpackz/stockpackz/blob/main/SECURITY.md).
+Privately, via GitHub security advisories — never a public issue. See [SECURITY.md](https://github.com/DSKPutra/stackstock/blob/main/SECURITY.md).

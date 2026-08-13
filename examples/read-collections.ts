@@ -5,9 +5,9 @@
  * Completed collections claim a soulbound badge, a bonus stock allocation
  * funded by the Pack Rewards Vault, and a free pack credit.
  */
-import { StockPackzClient, NotDeployedError } from "@stockpackz/sdk";
+import { StackStockClient, NotDeployedError } from "@stackstock/sdk";
 
-const client = new StockPackzClient({ chain: "robinhood" });
+const client = new StackStockClient({ chain: "robinhood" });
 
 async function main() {
   const wallet = "0x0000000000000000000000000000000000000001";

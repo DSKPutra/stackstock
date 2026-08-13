@@ -17,7 +17,7 @@ import {IRandomnessCoordinator, IRandomnessConsumer} from "../interfaces/IRandom
 ///         by the protocol. It cannot steal funds and cannot fulfill twice,
 ///         but a malicious keeper could grind its entropy contribution.
 ///         Migration path: swap in a Chainlink VRF coordinator via
-///         StockPackz.setCoordinator once VRF is live on Robinhood Chain.
+///         StackStock.setCoordinator once VRF is live on Robinhood Chain.
 contract KeeperRandomnessCoordinator is IRandomnessCoordinator, AccessControl, ReentrancyGuard {
     bytes32 public constant KEEPER_ROLE = keccak256("KEEPER_ROLE");
     bytes32 public constant CONSUMER_ROLE = keccak256("CONSUMER_ROLE");

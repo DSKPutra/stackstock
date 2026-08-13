@@ -4,9 +4,9 @@
  * Flow: approve USDG → openPack → randomness → swap → stock in wallet.
  * A failed swap never loses funds: retry with wider slippage or refund.
  */
-import { StockPackzClient, NotDeployedError } from "@stockpackz/sdk";
+import { StackStockClient, NotDeployedError } from "@stackstock/sdk";
 
-const client = new StockPackzClient({ chain: "robinhood" });
+const client = new StackStockClient({ chain: "robinhood" });
 
 async function main() {
   const packId = 1n;

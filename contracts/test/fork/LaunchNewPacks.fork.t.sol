@@ -4,7 +4,7 @@ pragma solidity ^0.8.26;
 import {Test, console2} from "forge-std/Test.sol";
 import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-import {StockPackz} from "../../src/StockPackz.sol";
+import {StackStock} from "../../src/StackStock.sol";
 import {KeeperRandomnessCoordinator} from "../../src/randomness/KeeperRandomnessCoordinator.sol";
 
 interface IAdapterAdmin {
@@ -21,7 +21,7 @@ interface IAdapterAdmin {
 ///         Run: forge test --match-contract LaunchNewPacksFork \
 ///              --fork-url https://rpc.mainnet.chain.robinhood.com -vv
 contract LaunchNewPacksFork is Test {
-    StockPackz constant core = StockPackz(0xEee1458Ad6DeB8Fa35f39FDdbB1aaa12D4A422f3);
+    StackStock constant core = StackStock(0xEee1458Ad6DeB8Fa35f39FDdbB1aaa12D4A422f3);
     KeeperRandomnessCoordinator constant coordinator =
         KeeperRandomnessCoordinator(0x28A6a8eEa385FEbB9F0D88F6C6064cbE972f9cD7);
     IAdapterAdmin constant adapter = IAdapterAdmin(0x0B17df805a8C0921cB1B141F4515612028d8E4a7);
@@ -68,8 +68,8 @@ contract LaunchNewPacksFork is Test {
 
     // ------------------------------------------------------------ helpers
 
-    function _opt(address token, uint32 weight) internal pure returns (StockPackz.StockOption memory) {
-        return StockPackz.StockOption({token: token, weight: weight, maxSlippageBps: 500, minimumQuote: 0, active: true});
+    function _opt(address token, uint32 weight) internal pure returns (StackStock.StockOption memory) {
+        return StackStock.StockOption({token: token, weight: weight, maxSlippageBps: 500, minimumQuote: 0, active: true});
     }
 
     /// Open + fulfill randomness + assert the user actually received stock.
@@ -118,10 +118,10 @@ contract LaunchNewPacksFork is Test {
 
         for (uint256 i = 0; i < tokens.length; i++) {
             // Single-option pack forces this exact stock to be selected.
-            StockPackz.StockOption[] memory opts = new StockPackz.StockOption[](1);
+            StackStock.StockOption[] memory opts = new StackStock.StockOption[](1);
             opts[0] = _opt(tokens[i], 10_000);
 
-            StockPackz.PackConfig memory cfg;
+            StackStock.PackConfig memory cfg;
             cfg.name = string.concat("Probe ", names[i]);
             cfg.description = "stress probe";
             cfg.price = 14.99e6;
@@ -171,7 +171,7 @@ contract LaunchNewPacksFork is Test {
         vm.startPrank(OPS);
 
         // --- Magnificent 7 ---
-        StockPackz.StockOption[] memory m7 = new StockPackz.StockOption[](7);
+        StackStock.StockOption[] memory m7 = new StackStock.StockOption[](7);
         m7[0] = _opt(AAPL, 1800);
         m7[1] = _opt(MSFT, 1800);
         m7[2] = _opt(AMZN, 1800);
@@ -180,7 +180,7 @@ contract LaunchNewPacksFork is Test {
         m7[5] = _opt(NVDA, 800);
         m7[6] = _opt(META, 800);
 
-        StockPackz.PackConfig memory mag7;
+        StackStock.PackConfig memory mag7;
         mag7.name = "Magnificent 7";
         mag7.description = "The seven giants that move the market";
         mag7.price = 14.99e6;
@@ -192,11 +192,11 @@ contract LaunchNewPacksFork is Test {
         mag7Id = core.createPack(mag7, m7);
 
         // --- Index pack ---
-        StockPackz.StockOption[] memory ix = new StockPackz.StockOption[](2);
+        StackStock.StockOption[] memory ix = new StackStock.StockOption[](2);
         ix[0] = _opt(SPY, 5000);
         ix[1] = _opt(QQQ, 5000);
 
-        StockPackz.PackConfig memory index;
+        StackStock.PackConfig memory index;
         index.name = "Index Pack";
         index.description = "Own the whole market: S&P 500 & Nasdaq 100";
         index.price = 9.99e6;

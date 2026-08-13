@@ -1,6 +1,6 @@
 /**
- * Protocol economics — mirrors the on-chain StockPackz configuration
- * (contracts/src/StockPackz.sol). One source of truth for the UI.
+ * Protocol economics — mirrors the on-chain StackStock configuration
+ * (contracts/src/StackStock.sol). One source of truth for the UI.
  */
 
 export const PACK_ECONOMICS = {

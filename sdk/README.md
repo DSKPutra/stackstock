@@ -1,21 +1,21 @@
-# @stockpackz/sdk
+# @stackstock/sdk
 
-Typed TypeScript client for the StockPackz protocol: packs, openings, odds, XP, membership, and the jackpot.
+Typed TypeScript client for the StackStock protocol: packs, openings, odds, XP, membership, and the jackpot.
 
 > **Status:** API-stable skeleton. Contract transports land when Robinhood Chain deployment addresses are finalized (Roadmap Phase 3). Every method is fully typed today so integrations can build against the final surface.
 
 ## Install
 
 ```bash
-npm install @stockpackz/sdk viem
+npm install @stackstock/sdk viem
 ```
 
 ## Usage
 
 ```ts
-import { StockPackzClient } from "@stockpackz/sdk";
+import { StackStockClient } from "@stackstock/sdk";
 
-const client = new StockPackzClient({ chain: "robinhood" });
+const client = new StackStockClient({ chain: "robinhood" });
 
 // Read a pack and its exact on-chain odds
 const pack = await client.packs.get(1n);

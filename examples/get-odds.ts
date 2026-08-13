@@ -4,9 +4,9 @@
  * Odds are on-chain weights over a 10,000 denominator, snapshotted per
  * opening — what you read here is exactly what your opening uses.
  */
-import { StockPackzClient, NotDeployedError } from "@stockpackz/sdk";
+import { StackStockClient, NotDeployedError } from "@stackstock/sdk";
 
-const client = new StockPackzClient({ chain: "robinhood" });
+const client = new StackStockClient({ chain: "robinhood" });
 
 async function main() {
   const odds = await client.packs.odds(1n);

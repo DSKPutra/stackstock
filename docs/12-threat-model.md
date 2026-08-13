@@ -1,6 +1,6 @@
 # Threat Model
 
-An attacker-by-attacker walkthrough of who could try to break StockPackz, what they would attempt, and what stops them.
+An attacker-by-attacker walkthrough of who could try to break StackStock, what they would attempt, and what stops them.
 
 ## The malicious user
 
@@ -10,7 +10,7 @@ An attacker-by-attacker walkthrough of who could try to break StockPackz, what t
 
 ## The flash-loan whale
 
-**Attempts:** borrowing STOCKPACKZ for one block to claim Diamond benefits, then repaying.
+**Attempts:** borrowing STACKSTOCK for one block to claim Diamond benefits, then repaying.
 
 **Stopped by:** benefit design rather than detection. Instant benefits are value-capped per opening (≤ 0.70 USDG discount + 0.30 USDG subsidy) — far below flash-loan costs at scale. Time-based rewards (Pack Printer, Phase 2) require staking with a minimum continuous period and checkpointed balances, which flash loans cannot satisfy.
 

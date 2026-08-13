@@ -4,7 +4,7 @@ pragma solidity ^0.8.26;
 import {Script, console} from "forge-std/Script.sol";
 import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-import {StockPackzToken} from "../src/token/StockPackzToken.sol";
+import {StackStockToken} from "../src/token/StackStockToken.sol";
 import {PackRewardsVault} from "../src/vaults/PackRewardsVault.sol";
 
 /// @title DeployToken
@@ -31,7 +31,7 @@ contract DeployToken is Script {
         PackRewardsVault jackpotSupportVault = new PackRewardsVault(usdg, deployer);
 
         // 2. Token — full supply minted to the deployer, 1% tax to the vaults.
-        StockPackzToken token = new StockPackzToken(
+        StackStockToken token = new StackStockToken(
             supply,
             deployer,
             address(rewardsVault),

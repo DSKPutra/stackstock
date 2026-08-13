@@ -1,6 +1,6 @@
 # Architecture
 
-StockPackz is a modular protocol: a core settlement engine surrounded by optional, interface-connected modules. The core never depends on any module being present — the base product functions with every optional module unset.
+StackStock is a modular protocol: a core settlement engine surrounded by optional, interface-connected modules. The core never depends on any module being present — the base product functions with every optional module unset.
 
 ## System overview
 
@@ -9,11 +9,11 @@ flowchart TD
     subgraph Client
         U([User Wallet])
         FE[Next.js Frontend]
-        SDK["@stockpackz/sdk"]
+        SDK["@stackstock/sdk"]
     end
 
     subgraph Core["Settlement Core"]
-        SP[StockPackz]
+        SP[StackStock]
         VRF[Randomness Coordinator]
         ADP[UniswapV4Adapter]
     end
@@ -26,7 +26,7 @@ flowchart TD
     end
 
     subgraph Token["Optional Token Layer"]
-        TOK[StockPackzToken]
+        TOK[StackStockToken]
         MT[MembershipTierManager]
         XP[XPManager]
         REG[LevelUnlockRegistry]
@@ -49,9 +49,9 @@ flowchart TD
 
 | Contract | Responsibility |
 | --- | --- |
-| `StockPackz` | Pack configs, opening state machine, jackpot, liability accounting |
+| `StackStock` | Pack configs, opening state machine, jackpot, liability accounting |
 | `UniswapV4Adapter` | Routing behind `IStockSwapAdapter`: allowlists, pair flags, liquidity floors |
-| `StockPackzToken` | Optional ERC-20; 1% transfer tax split 50/50 into two vaults; no reflections, no buyback |
+| `StackStockToken` | Optional ERC-20; 1% transfer tax split 50/50 into two vaults; no reflections, no buyback |
 | `TaxVaultConverter` | Keeper-driven, slippage-bounded conversion of taxed tokens into USDG |
 | `PackRewardsVault` | Pre-funded USDG for subsidies, key packs, and rewards; pull-or-fallback semantics |
 | `MembershipTierManager` | Configurable tiers: discounts, subsidies, XP multipliers, access flags |
@@ -95,7 +95,7 @@ Every default opening splits 10 USDG:
 | Treasury | 0.60 | − holder discount (discount can never exceed this leg) |
 | Jackpot | 0.40 | Fixed, never discounted |
 
-Token holders additionally burn ≈ $0.05 of STOCKPACKZ per opening (oracle-priced); non-holders pay a 0.20 USDG surcharge instead. The guaranteed stock leg is identical in both flows.
+Token holders additionally burn ≈ $0.05 of STACKSTOCK per opening (oracle-priced); non-holders pay a 0.20 USDG surcharge instead. The guaranteed stock leg is identical in both flows.
 
 ## Frontend
 

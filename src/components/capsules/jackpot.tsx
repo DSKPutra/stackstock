@@ -56,7 +56,7 @@ export function Jackpot() {
           </motion.p>
 
           <p className="mx-auto mt-8 max-w-md text-lg leading-relaxed text-white/40">
-            Every StockPack contributes to a shared jackpot vault. One lucky opening wins the
+            Every StackStock contributes to a shared jackpot vault. One lucky opening wins the
             vault.
           </p>
           <p className="mt-2 text-sm text-white/25">

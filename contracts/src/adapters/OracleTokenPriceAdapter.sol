@@ -16,7 +16,7 @@ interface IPriceFeed {
 }
 
 /// @title OracleTokenPriceAdapter
-/// @notice USD price of STOCKPACKZ from a configured oracle feed, with
+/// @notice USD price of STACKSTOCK from a configured oracle feed, with
 ///         staleness and sanity bounds. Reverts on unusable prices so the
 ///         core can fall back (Mode B surcharge) instead of mis-burning.
 contract OracleTokenPriceAdapter is ITokenPriceAdapter, AccessControl {

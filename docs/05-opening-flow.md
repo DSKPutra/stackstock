@@ -1,6 +1,6 @@
 # Opening Flow
 
-The opening flow is the core interaction of Stockpackz — a full-screen cinematic sequence that culminates in revealing a tokenized stock. It is designed to feel like unboxing an Apple product mixed with a Pokémon booster pack: premium, minimal, no slot machine.
+The opening flow is the core interaction of Stackstock — a full-screen cinematic sequence that culminates in revealing a tokenized stock. It is designed to feel like unboxing an Apple product mixed with a Pokémon booster pack: premium, minimal, no slot machine.
 
 **Component:** `src/components/capsules/open-capsule-flow.tsx`
 

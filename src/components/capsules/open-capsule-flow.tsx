@@ -13,7 +13,7 @@ import { formatCurrency } from "@/lib/utils";
 import { StockLogo } from "./stock-logo";
 import { ConnectWalletPrompt } from "./connect-wallet-prompt";
 import { MiniPack } from "./mini-pack";
-import { StockpackzLogo } from "@/components/brand/stockpackz-logo";
+import { StackstockLogo } from "@/components/brand/stackstock-logo";
 import { getCapsuleArtwork } from "@/lib/capsule-artwork";
 
 type FlowPhase =
@@ -352,12 +352,12 @@ export function OpenCapsuleFlow({
               transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
               className="max-h-[80vh] overflow-y-auto rounded-3xl bg-white/[0.04] p-6 backdrop-blur-2xl"
             >
-              <StockpackzLogo variant="icon" className="mx-auto mb-4 h-10 w-10" />
+              <StackstockLogo variant="icon" className="mx-auto mb-4 h-10 w-10" />
               <h3 className="text-center text-xl font-semibold tracking-tight text-white">
                 Choose a pack
               </h3>
               <p className="mt-1.5 text-center text-sm text-white/40">
-                Pick which StockPack to open
+                Pick which StackStock to open
               </p>
               {openError && (
                 <p className="mx-auto mt-3 max-w-sm rounded-2xl bg-red-500/[0.08] px-4 py-2.5 text-center text-[12px] leading-relaxed text-red-300/90 ring-1 ring-red-500/[0.15]">
@@ -683,7 +683,7 @@ export function OpenCapsuleFlow({
                   transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                   className="w-full rounded-3xl bg-white/[0.04] p-8 text-center backdrop-blur-2xl"
                 >
-                  <StockpackzLogo variant="icon" className="mx-auto mb-4 h-8 w-8 opacity-70" />
+                  <StackstockLogo variant="icon" className="mx-auto mb-4 h-8 w-8 opacity-70" />
                   <p className="text-[11px] font-medium uppercase tracking-[0.25em] text-white/30">
                     Added to your portfolio
                   </p>

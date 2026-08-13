@@ -14,8 +14,8 @@ import type { CapsuleType } from "./types";
 /* Deployment configuration                                            */
 /* ------------------------------------------------------------------ */
 
-export const STOCKPACKZ_ADDRESS = process.env
-  .NEXT_PUBLIC_STOCKPACKZ_ADDRESS as `0x${string}` | undefined;
+export const STACKSTOCK_ADDRESS = process.env
+  .NEXT_PUBLIC_STACKSTOCK_ADDRESS as `0x${string}` | undefined;
 export const USDG_ADDRESS = "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168" as const;
 
 /** $PACKZ — launched on Flap (bonding curve), Robinhood Chain. */
@@ -49,7 +49,7 @@ export const ONCHAIN_PACK_XP: Record<string, number> = {
 };
 
 export function isOnchainPack(capsuleId: string): boolean {
-  return Boolean(STOCKPACKZ_ADDRESS) && capsuleId in ONCHAIN_PACK_IDS;
+  return Boolean(STACKSTOCK_ADDRESS) && capsuleId in ONCHAIN_PACK_IDS;
 }
 
 /* ------------------------------------------------------------------ */
@@ -115,7 +115,7 @@ const adapterAbi = [
   },
 ] as const;
 
-export const stockPackzAbi = [
+export const stackStockAbi = [
   {
     type: "function",
     name: "openPack",
@@ -297,7 +297,7 @@ export async function openPackOnchain(
   account: `0x${string}`,
   hooks?: OpenPackHooks
 ): Promise<SettlementResult> {
-  const core = STOCKPACKZ_ADDRESS;
+  const core = STACKSTOCK_ADDRESS;
   if (!core) throw new OpeningError("Contracts not configured");
   const onchainPackId = ONCHAIN_PACK_IDS[capsule.id];
   if (onchainPackId === undefined) throw new OpeningError("Pack not on-chain");
@@ -336,14 +336,14 @@ export async function openPackOnchain(
   // 2. Open the pack (5% max slippage, no credits).
   const openHash = await writeContract(wagmiConfig, {
     address: core,
-    abi: stockPackzAbi,
+    abi: stackStockAbi,
     functionName: "openPack",
     args: [onchainPackId, 500, 0n],
   });
   const receipt = await waitForTransactionReceipt(wagmiConfig, { hash: openHash });
 
   const logs = parseEventLogs({
-    abi: stockPackzAbi,
+    abi: stackStockAbi,
     eventName: "PackOpeningStarted",
     logs: receipt.logs,
   });
@@ -375,7 +375,7 @@ export async function openPackOnchain(
 
     const opening = await readContract(wagmiConfig, {
       address: core,
-      abi: stockPackzAbi,
+      abi: stackStockAbi,
       functionName: "openings",
       args: [openingId],
     });

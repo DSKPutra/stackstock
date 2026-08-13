@@ -1,12 +1,12 @@
 # Audit Scope
 
-This document defines the surface, invariants, and priorities for a security review of the StockPackz protocol. Status: **pre-audit** — no engagement has been completed yet.
+This document defines the surface, invariants, and priorities for a security review of the StackStock protocol. Status: **pre-audit** — no engagement has been completed yet.
 
 ## In-scope contracts
 
 | Contract | LoC focus | Priority |
 | --- | --- | --- |
-| `contracts/src/StockPackz.sol` | Opening state machine, jackpot ordering, liability accounting, burn/surcharge, gates | Critical |
+| `contracts/src/StackStock.sol` | Opening state machine, jackpot ordering, liability accounting, burn/surcharge, gates | Critical |
 | `contracts/src/adapters/UniswapV4Adapter.sol` | Swap execution, allowlists, deadline/slippage enforcement | Critical |
 | `contracts/src/vaults/PackRewardsVault.sol` | Pull-or-fallback funding semantics | High |
 | `contracts/src/vaults/TaxVaultConverter.sol` | Keeper conversion bounds | High |
@@ -15,7 +15,7 @@ This document defines the surface, invariants, and priorities for a security rev
 | `contracts/src/progression/XPManager.sol` | Award gating, curve math | Medium |
 | `contracts/src/progression/LevelUnlockRegistry.sol` | Registry access | Low |
 | `contracts/src/badges/CollectionBadges.sol` | Claim verification, soulbound enforcement | Medium |
-| `contracts/src/token/StockPackzToken.sol` | Tax split correctness, exemptions | Medium |
+| `contracts/src/token/StackStockToken.sol` | Tax split correctness, exemptions | Medium |
 | `contracts/src/adapters/OracleTokenPriceAdapter.sol` | Staleness/bounds checks | High |
 
 Mocks (`contracts/src/mocks/*`) are out of scope except as test infrastructure.

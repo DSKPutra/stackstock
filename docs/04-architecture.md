@@ -13,10 +13,10 @@ src/
 │   └── globals.css         # Theme tokens, foil shimmer, animations
 ├── components/
 │   ├── brand/
-│   │   └── stockpackz-logo.tsx         # Logo (full / icon / wordmark variants)
+│   │   └── stackstock-logo.tsx         # Logo (full / icon / wordmark variants)
 │   ├── capsules/
 │   │   ├── hero.tsx                    # Hero: headline + pack with orbiting logos
-│   │   ├── stock-pack-visual.tsx       # Floating 3D foil pack render
+│   │   ├── stack-stock-visual.tsx       # Floating 3D foil pack render
 │   │   ├── live-openings.tsx           # Live Openings feed (+ jackpot events)
 │   │   ├── capsule-grid.tsx            # Pack section wrapper
 │   │   ├── capsule-card.tsx            # Expandable pack explorer card

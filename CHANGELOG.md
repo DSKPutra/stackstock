@@ -21,7 +21,7 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ### Added
 
-- **Core protocol** — `StockPackz` pack engine with just-in-time settlement through a Uniswap v4 adapter, verifiable-randomness selection with per-opening snapshots, shared jackpot vault with explicit 90/10 payout ordering, failure-safe state machine (retry / full refund), and liability-aware treasury accounting
+- **Core protocol** — `StackStock` pack engine with just-in-time settlement through a Uniswap v4 adapter, verifiable-randomness selection with per-opening snapshots, shared jackpot vault with explicit 90/10 payout ordering, failure-safe state machine (retry / full refund), and liability-aware treasury accounting
 - **Supporting contracts** — protocol token with 50/50 tax vaults, keeper tax conversion, USDG-backed Pack Credits, soulbound collection badges
 - **Frontend** — Next.js app: hero, pack explorer, cinematic opening flow, live activity, jackpot, rarity, transparency, and docs pages
 - **Test suite** — Foundry tests with deterministic randomness injection covering selection distribution, fee splits, jackpot payout, snapshot immunity, failure branches, and withdrawal caps

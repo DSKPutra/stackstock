@@ -2,7 +2,7 @@
 pragma solidity ^0.8.26;
 
 import {Script, console2} from "forge-std/Script.sol";
-import {StockPackz} from "../src/StockPackz.sol";
+import {StackStock} from "../src/StackStock.sol";
 
 interface IAdapterAdmin {
     function configurePair(address tokenIn, address tokenOut, uint24 fee, int24 tickSpacing, uint256 minQuoteOut)
@@ -10,11 +10,11 @@ interface IAdapterAdmin {
 }
 
 /// @notice Launch two new packs (Magnificent 7 + Index Pack) on the live
-///         StockPackz. Wires the 8 missing adapter pairs first (INTC was
+///         StackStock. Wires the 8 missing adapter pairs first (INTC was
 ///         already configured). Validated end-to-end by the mainnet fork
 ///         stress test in test/fork/LaunchNewPacks.fork.t.sol.
 contract LaunchNewPacks is Script {
-    StockPackz constant core = StockPackz(0xEee1458Ad6DeB8Fa35f39FDdbB1aaa12D4A422f3);
+    StackStock constant core = StackStock(0xEee1458Ad6DeB8Fa35f39FDdbB1aaa12D4A422f3);
     IAdapterAdmin constant adapter = IAdapterAdmin(0x0B17df805a8C0921cB1B141F4515612028d8E4a7);
     address constant USDG = 0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168;
 
@@ -42,7 +42,7 @@ contract LaunchNewPacks is Script {
         adapter.configurePair(USDG, QQQ, 10000, 200, 0);
 
         // --- Magnificent 7 ($14.99: $13.49 stock / $0.90 fee / $0.60 jackpot) ---
-        StockPackz.StockOption[] memory m7 = new StockPackz.StockOption[](7);
+        StackStock.StockOption[] memory m7 = new StackStock.StockOption[](7);
         m7[0] = _opt(AAPL, 1800);
         m7[1] = _opt(MSFT, 1800);
         m7[2] = _opt(AMZN, 1800);
@@ -51,7 +51,7 @@ contract LaunchNewPacks is Script {
         m7[5] = _opt(NVDA, 800); //  epic
         m7[6] = _opt(META, 800); //  epic
 
-        StockPackz.PackConfig memory mag7;
+        StackStock.PackConfig memory mag7;
         mag7.name = "Magnificent 7";
         mag7.description = "The seven giants that move the market";
         mag7.price = 14.99e6;
@@ -63,11 +63,11 @@ contract LaunchNewPacks is Script {
         uint256 mag7Id = core.createPack(mag7, m7);
 
         // --- Index Pack ($9.99: $9.00 stock / $0.59 fee / $0.40 jackpot) ---
-        StockPackz.StockOption[] memory ix = new StockPackz.StockOption[](2);
+        StackStock.StockOption[] memory ix = new StackStock.StockOption[](2);
         ix[0] = _opt(SPY, 5000);
         ix[1] = _opt(QQQ, 5000);
 
-        StockPackz.PackConfig memory index;
+        StackStock.PackConfig memory index;
         index.name = "Index Pack";
         index.description = "Own the whole market: S&P 500 & Nasdaq 100";
         index.price = 9.99e6;
@@ -84,7 +84,7 @@ contract LaunchNewPacks is Script {
         console2.log("Index Pack id:", indexId);
     }
 
-    function _opt(address token, uint32 weight) internal pure returns (StockPackz.StockOption memory) {
-        return StockPackz.StockOption({token: token, weight: weight, maxSlippageBps: 500, minimumQuote: 0, active: true});
+    function _opt(address token, uint32 weight) internal pure returns (StackStock.StockOption memory) {
+        return StackStock.StockOption({token: token, weight: weight, maxSlippageBps: 500, minimumQuote: 0, active: true});
     }
 }

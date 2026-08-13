@@ -7,7 +7,7 @@ import {IXPManager} from "../interfaces/IXPManager.sol";
 
 /// @title XPManager
 /// @notice Pack XP + level progression. XP is only awardable by contracts
-///         holding AWARDER_ROLE (the StockPackz core), which calls it exactly
+///         holding AWARDER_ROLE (the StackStock core), which calls it exactly
 ///         once per settled opening — failed and refunded openings never
 ///         reach the award path.
 ///

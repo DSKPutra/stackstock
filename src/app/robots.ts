@@ -6,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://stockpackz.xyz/sitemap.xml",
-    host: "https://stockpackz.xyz",
+    sitemap: "https://stackstock.xyz/sitemap.xml",
+    host: "https://stackstock.xyz",
   };
 }

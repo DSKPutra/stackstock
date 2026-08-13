@@ -6,7 +6,7 @@ import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
 import {UniswapV4NativeAdapter} from "../../src/adapters/UniswapV4NativeAdapter.sol";
 import {KeeperRandomnessCoordinator} from "../../src/randomness/KeeperRandomnessCoordinator.sol";
-import {StockPackz} from "../../src/StockPackz.sol";
+import {StackStock} from "../../src/StackStock.sol";
 import {IPoolManager, IStateView} from "../../src/interfaces/IUniswapV4.sol";
 import {IRandomnessCoordinator} from "../../src/interfaces/IRandomnessCoordinator.sol";
 import {IStockSwapAdapter} from "../../src/interfaces/IStockSwapAdapter.sol";
@@ -25,7 +25,7 @@ contract RobinhoodForkTest is Test {
 
     UniswapV4NativeAdapter adapter;
     KeeperRandomnessCoordinator coordinator;
-    StockPackz core;
+    StackStock core;
 
     address admin = makeAddr("admin");
     address keeper = makeAddr("keeper");
@@ -36,7 +36,7 @@ contract RobinhoodForkTest is Test {
 
         adapter = new UniswapV4NativeAdapter(IPoolManager(POOL_MANAGER), IStateView(STATE_VIEW), admin);
         coordinator = new KeeperRandomnessCoordinator(admin);
-        core = new StockPackz(
+        core = new StackStock(
             IERC20(USDG), IRandomnessCoordinator(address(coordinator)), IStockSwapAdapter(address(adapter)), admin
         );
 
@@ -76,12 +76,12 @@ contract RobinhoodForkTest is Test {
 
     function test_fork_fullOpening_endToEnd() public {
         // Create a live-config pack: 10 USDG = 9 stock + 0.6 fee + 0.4 jackpot.
-        StockPackz.StockOption[] memory options = new StockPackz.StockOption[](3);
-        options[0] = StockPackz.StockOption({token: NVDA, weight: 4000, maxSlippageBps: 500, minimumQuote: 0, active: true});
-        options[1] = StockPackz.StockOption({token: AAPL, weight: 3000, maxSlippageBps: 500, minimumQuote: 0, active: true});
-        options[2] = StockPackz.StockOption({token: SPCX, weight: 3000, maxSlippageBps: 500, minimumQuote: 0, active: true});
+        StackStock.StockOption[] memory options = new StackStock.StockOption[](3);
+        options[0] = StackStock.StockOption({token: NVDA, weight: 4000, maxSlippageBps: 500, minimumQuote: 0, active: true});
+        options[1] = StackStock.StockOption({token: AAPL, weight: 3000, maxSlippageBps: 500, minimumQuote: 0, active: true});
+        options[2] = StackStock.StockOption({token: SPCX, weight: 3000, maxSlippageBps: 500, minimumQuote: 0, active: true});
 
-        StockPackz.PackConfig memory cfg;
+        StackStock.PackConfig memory cfg;
         cfg.name = "Fork AI Pack";
         cfg.price = 10e6;
         cfg.stockAmount = 9e6;

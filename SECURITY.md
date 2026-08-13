@@ -1,6 +1,6 @@
 # Security Policy
 
-StockPackz moves user funds through randomness, swaps, and vault accounting. This document describes what the protocol defends against, what it assumes, what it knowingly does not solve, and how to report anything we missed.
+StackStock moves user funds through randomness, swaps, and vault accounting. This document describes what the protocol defends against, what it assumes, what it knowingly does not solve, and how to report anything we missed.
 
 ## Threat model
 

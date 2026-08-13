@@ -37,7 +37,7 @@ export function Hero({ onOpenCapsule, walletReady }: HeroProps) {
 
           <BlurFade delay={0.14}>
             <p className="mx-auto mt-8 max-w-md text-lg leading-relaxed text-white/50 sm:text-xl lg:mx-0">
-              Every StockPack holds real tokenized stocks.
+              Every StackStock holds real tokenized stocks.
             </p>
             <p className="mx-auto mt-2 max-w-md text-[15px] leading-relaxed text-white/30 lg:mx-0">
               Own pieces of the world&apos;s greatest companies — instantly.

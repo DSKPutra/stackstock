@@ -1,8 +1,8 @@
 # Overview
 
-## What is Stockpackz?
+## What is Stackstock?
 
-**Stockpackz** is a premium on-chain experience built on **Robinhood Chain** where users open themed packs and receive **real tokenized equities** — not points, not worthless rewards, not off-chain promises.
+**Stackstock** is a premium on-chain experience built on **Robinhood Chain** where users open themed packs and receive **real tokenized equities** — not points, not worthless rewards, not off-chain promises.
 
 Each pack opening:
 
@@ -50,7 +50,7 @@ Each pack opening:
 ## User Journey
 
 ```
-Land on Stockpackz → Connect wallet → Open Pack OR pick a pack card
+Land on Stackstock → Connect wallet → Open Pack OR pick a pack card
     → Choose pack type → Cinematic reveal → Swap pipeline animates
     → Fractional token in portfolio → Open Again → Progress collections
 ```

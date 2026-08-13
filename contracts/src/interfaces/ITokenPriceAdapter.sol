@@ -2,7 +2,7 @@
 pragma solidity ^0.8.26;
 
 /// @title ITokenPriceAdapter
-/// @notice Trusted USD price source for the STOCKPACKZ token, used to derive
+/// @notice Trusted USD price source for the STACKSTOCK token, used to derive
 ///         the per-opening burn quantity. Never hardcode token amounts.
 interface ITokenPriceAdapter {
     /// @notice Token amount (18 decimals) currently worth `usdAmount`

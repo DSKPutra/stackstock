@@ -1,5 +1,5 @@
 #!/bin/bash
-# Top up the StockPackz jackpot from the rewards wallet.
+# Top up the StackStock jackpot from the rewards wallet.
 #
 # Usage:  ./fund-jackpot.sh <amount-usd> <private-key-or-account>
 # Example: ./fund-jackpot.sh 500 --ledger        (hardware wallet)

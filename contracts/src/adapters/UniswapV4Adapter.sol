@@ -29,7 +29,7 @@ interface IV4RouterLike {
 }
 
 /// @title UniswapV4Adapter
-/// @notice Production adapter between StockPackz and Uniswap v4 pools.
+/// @notice Production adapter between StackStock and Uniswap v4 pools.
 ///         Enforces a supported-token allowlist, per-pair enable flags, and a
 ///         per-pair liquidity threshold under which quotes are rejected.
 ///         The core contract depends only on IStockSwapAdapter, so this whole

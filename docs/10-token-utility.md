@@ -1,6 +1,6 @@
 # Token Utility & Progression
 
-The STOCKPACKZ token is an **optional membership and progression layer**. The pack product fully works without it: the guaranteed 9 USDG stock purchase is always funded by the buyer and never depends on token price, tax revenue, or buybacks (there are none).
+The STACKSTOCK token is an **optional membership and progression layer**. The pack product fully works without it: the guaranteed 9 USDG stock purchase is always funded by the buyer and never depends on token price, tax revenue, or buybacks (there are none).
 
 ## Burn or surcharge (Mode B)
 
@@ -8,7 +8,7 @@ Every paid opening either burns token value or pays a surcharge — always visib
 
 | User | Pays | Burn |
 | --- | --- | --- |
-| Holder | 10.00 USDG | ≈ $0.05 of STOCKPACKZ, sent to the dead address |
+| Holder | 10.00 USDG | ≈ $0.05 of STACKSTOCK, sent to the dead address |
 | Non-holder | 10.20 USDG | none |
 
 The burn quantity is derived per-opening from an oracle price adapter (staleness- and bounds-checked) — never a hardcoded token amount. If the oracle is unusable or the user lacks balance/allowance, the opening safely falls back to the surcharge.

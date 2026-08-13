@@ -20,7 +20,7 @@ const jackpotAbi = [
 ] as const;
 
 export async function GET() {
-  const core = process.env.NEXT_PUBLIC_STOCKPACKZ_ADDRESS as Hex | undefined;
+  const core = process.env.NEXT_PUBLIC_STACKSTOCK_ADDRESS as Hex | undefined;
   if (!core) {
     return NextResponse.json({ valueUsd: 0, growthPerSec: 0, updatedAt: new Date().toISOString() });
   }

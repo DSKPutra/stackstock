@@ -3,7 +3,7 @@ pragma solidity ^0.8.26;
 
 /// @title IPackCredits
 /// @notice Non-transferable, USDG-denominated credit ledger. Credits can only
-///         be spent by the StockPackz core contract toward pack openings, and
+///         be spent by the StackStock core contract toward pack openings, and
 ///         every spend is backed 1:1 by USDG transferred to the core contract.
 interface IPackCredits {
     /// @notice Spend `amount` of `user`'s credits toward a pack opening.

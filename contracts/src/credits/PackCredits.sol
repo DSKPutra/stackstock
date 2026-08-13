@@ -17,7 +17,7 @@ import {IPackCredits} from "../interfaces/IPackCredits.sol";
 contract PackCredits is IPackCredits, AccessControl, ReentrancyGuard {
     using SafeERC20 for IERC20;
 
-    bytes32 public constant SPENDER_ROLE = keccak256("SPENDER_ROLE"); // StockPackz core
+    bytes32 public constant SPENDER_ROLE = keccak256("SPENDER_ROLE"); // StackStock core
     bytes32 public constant FUNDER_ROLE = keccak256("FUNDER_ROLE"); // rewards vault converter, admin
     bytes32 public constant GRANTER_ROLE = keccak256("GRANTER_ROLE"); // collection badges, promos
 

@@ -2,9 +2,9 @@
 pragma solidity ^0.8.26;
 
 import {BaseTest} from "./Base.t.sol";
-import {StockPackz} from "../src/StockPackz.sol";
+import {StackStock} from "../src/StackStock.sol";
 import {PackCredits} from "../src/credits/PackCredits.sol";
-import {StockPackzToken} from "../src/token/StockPackzToken.sol";
+import {StackStockToken} from "../src/token/StackStockToken.sol";
 import {TaxVaultConverter} from "../src/vaults/TaxVaultConverter.sol";
 import {CollectionBadges, IPackCreditsGranter} from "../src/badges/CollectionBadges.sol";
 import {PackRewardsVault} from "../src/vaults/PackRewardsVault.sol";
@@ -15,7 +15,7 @@ import {IStockSwapAdapter} from "../src/interfaces/IStockSwapAdapter.sol";
 
 contract CreditsTokenBadgesTest is BaseTest {
     PackCredits credits;
-    StockPackzToken packz;
+    StackStockToken packz;
     TaxVaultConverter rewardsConverter;
     TaxVaultConverter jackpotConverter;
     CollectionBadges badges;
@@ -24,7 +24,7 @@ contract CreditsTokenBadgesTest is BaseTest {
         super.setUp();
 
         // Deploy token with placeholder vaults, then wire converters in.
-        packz = new StockPackzToken(1_000_000e18, admin, makeAddr("tmpRewards"), makeAddr("tmpJackpot"));
+        packz = new StackStockToken(1_000_000e18, admin, makeAddr("tmpRewards"), makeAddr("tmpJackpot"));
         credits = new PackCredits(IERC20(address(usdg)), IERC20(address(packz)), admin);
 
         rewardsConverter = new TaxVaultConverter(

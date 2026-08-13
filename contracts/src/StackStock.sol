@@ -15,13 +15,13 @@ import {IPackRewardsVault} from "./interfaces/IPackRewardsVault.sol";
 import {IXPManager} from "./interfaces/IXPManager.sol";
 import {ITokenPriceAdapter} from "./interfaces/ITokenPriceAdapter.sol";
 
-/// @title StockPackz
+/// @title StackStock
 /// @notice Core protocol: themed packs that settle just-in-time into real
 ///         tokenized stocks. No inventory — every opening swaps USDG into the
 ///         selected stock through a pluggable adapter and delivers it straight
 ///         to the user's wallet. A shared USDG jackpot vault accrues from
 ///         every opening.
-contract StockPackz is AccessControl, Pausable, ReentrancyGuard, IRandomnessConsumer {
+contract StackStock is AccessControl, Pausable, ReentrancyGuard, IRandomnessConsumer {
     using SafeERC20 for IERC20;
 
     // ---------------------------------------------------------------- roles
@@ -127,7 +127,7 @@ contract StockPackz is AccessControl, Pausable, ReentrancyGuard, IRandomnessCons
 
     address public constant BURN_ADDRESS = 0x000000000000000000000000000000000000dEaD;
 
-    /// @notice USD value (6dp) of STOCKPACKZ burned per holder opening.
+    /// @notice USD value (6dp) of STACKSTOCK burned per holder opening.
     uint256 public burnUsdValue = 0.05e6;
     /// @notice Mode B: non-holders skip the burn but pay this USDG surcharge.
     uint256 public nonHolderSurchargeUsdg = 0.20e6;
@@ -426,7 +426,7 @@ contract StockPackz is AccessControl, Pausable, ReentrancyGuard, IRandomnessCons
         return burnEnabled && address(tokenPriceAdapter) != address(0) && address(protocolToken) != address(0);
     }
 
-    /// @dev Burn `burnUsdValue` worth of STOCKPACKZ from `user`, quantity
+    /// @dev Burn `burnUsdValue` worth of STACKSTOCK from `user`, quantity
     ///      derived from the price adapter. Returns 0 (no burn) when the
     ///      oracle is stale/out-of-bounds or the user lacks balance or
     ///      allowance — the caller then applies the Mode B surcharge.

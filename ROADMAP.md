@@ -1,6 +1,6 @@
 # Roadmap
 
-StockPackz ships in deliberate phases. Each phase is fully tested and documented before the next begins, and nothing in a later phase is allowed to weaken the core guarantee: every paid opening settles into a real tokenized stock or is fully refunded.
+StackStock ships in deliberate phases. Each phase is fully tested and documented before the next begins, and nothing in a later phase is allowed to weaken the core guarantee: every paid opening settles into a real tokenized stock or is fully refunded.
 
 ## Phase 1 — Core Packs ✅
 
@@ -21,7 +21,7 @@ The pack engine, end to end.
 
 Time-based rewards, done safely.
 
-- [ ] Non-custodial STOCKPACKZ staking with checkpointed balances
+- [ ] Non-custodial STACKSTOCK staking with checkpointed balances
 - [ ] Pack Printer: lazily-accrued, non-transferable Pack Keys
 - [ ] Key-funded promotional packs, fully backed by the Pack Rewards Vault
 - [ ] Seasons: seasonal XP, themed packs, exclusive badges
@@ -31,7 +31,7 @@ Time-based rewards, done safely.
 
 The protocol as a developer surface.
 
-- [ ] `@stockpackz/sdk` general availability (typed reads, writes, event streams)
+- [ ] `@stackstock/sdk` general availability (typed reads, writes, event streams)
 - [ ] Creator Packs: curated third-party pack configurations with published odds
 - [ ] Automated, rate-limited tax conversion keepers
 - [ ] Indexed analytics API (openings, burns, jackpot history)

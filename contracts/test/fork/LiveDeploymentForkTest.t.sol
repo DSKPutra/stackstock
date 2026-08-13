@@ -4,17 +4,17 @@ pragma solidity ^0.8.26;
 import {Test, console} from "forge-std/Test.sol";
 import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-import {StockPackz} from "../../src/StockPackz.sol";
+import {StackStock} from "../../src/StackStock.sol";
 import {KeeperRandomnessCoordinator} from "../../src/randomness/KeeperRandomnessCoordinator.sol";
 
 /// @notice End-to-end test against the LIVE deployed production contracts.
-///         Verifies the exact path a real user takes on stockpackz.xyz.
+///         Verifies the exact path a real user takes on stackstock.xyz.
 ///         forge test --match-contract LiveDeploymentForkTest \
 ///           --fork-url https://rpc.mainnet.chain.robinhood.com -vv
 contract LiveDeploymentForkTest is Test {
     address constant USDG = 0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168;
 
-    StockPackz constant core = StockPackz(0xEee1458Ad6DeB8Fa35f39FDdbB1aaa12D4A422f3);
+    StackStock constant core = StackStock(0xEee1458Ad6DeB8Fa35f39FDdbB1aaa12D4A422f3);
     KeeperRandomnessCoordinator constant coordinator =
         KeeperRandomnessCoordinator(0x28A6a8eEa385FEbB9F0D88F6C6064cbE972f9cD7);
     address constant DEPLOYER = 0x59154C6638b39038e648933d1f9a5f03e3677941;

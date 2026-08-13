@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { BlurFade } from "@/components/ui/blur-fade";
-import { StockpackzLogo } from "@/components/brand/stockpackz-logo";
+import { StackstockLogo } from "@/components/brand/stackstock-logo";
 
 interface FinalCtaProps {
   onOpen: () => void;
@@ -14,7 +14,7 @@ export function FinalCta({ onOpen, walletReady }: FinalCtaProps) {
     <section className="px-6 py-20 sm:px-10 lg:px-16">
       <div className="mx-auto max-w-3xl text-center">
         <BlurFade inView>
-          <StockpackzLogo variant="icon" className="mx-auto mb-8 h-14 w-14" />
+          <StackstockLogo variant="icon" className="mx-auto mb-8 h-14 w-14" />
           <h2 className="text-[clamp(2.5rem,6vw,4rem)] font-bold leading-[1.05] tracking-[-0.03em] text-white">
             Ready to open?
           </h2>

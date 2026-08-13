@@ -1,5 +1,5 @@
-Contact: mailto:security@stockpackz.xyz
-Canonical: https://stockpackz.xyz/.well-known/security.txt
+Contact: mailto:security@stackstock.xyz
+Canonical: https://stackstock.xyz/.well-known/security.txt
 Preferred-Languages: en
-Policy: https://stockpackz.xyz/docs
+Policy: https://stackstock.xyz/docs
 Expires: 2027-01-01T00:00:00.000Z

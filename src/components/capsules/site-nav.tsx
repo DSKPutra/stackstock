@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
-import { StockpackzLogo } from "@/components/brand/stockpackz-logo";
+import { StackstockLogo } from "@/components/brand/stackstock-logo";
 import { WalletButton } from "./wallet-button";
 
 const LINKS = [
@@ -66,8 +66,8 @@ export function SiteNav() {
         }`}
       >
         <Link href="/" className="flex shrink-0 items-center gap-2">
-          <StockpackzLogo variant="icon" className="h-6 w-6" priority />
-          <StockpackzLogo variant="wordmark" className="hidden h-3 w-auto lg:block" />
+          <StackstockLogo variant="icon" className="h-6 w-6" priority />
+          <StackstockLogo variant="wordmark" className="hidden h-3 w-auto lg:block" />
         </Link>
 
         <div className="hidden items-center sm:flex">

@@ -4,7 +4,7 @@ pragma solidity ^0.8.26;
 import {ERC20} from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import {AccessControl} from "@openzeppelin/contracts/access/AccessControl.sol";
 
-/// @title StockPackzToken
+/// @title StackStockToken
 /// @notice Optional protocol/membership token. Users never need it to open
 ///         normal packs and core settlement never depends on its price.
 ///
@@ -15,7 +15,7 @@ import {AccessControl} from "@openzeppelin/contracts/access/AccessControl.sol";
 ///         No marketing tax, no dev tax, no reflections, no auto-liquidity,
 ///         no buyback, and — critically — no swap-on-transfer: taxed tokens
 ///         simply accumulate in the vaults until a keeper converts them.
-contract StockPackzToken is ERC20, AccessControl {
+contract StackStockToken is ERC20, AccessControl {
     uint256 public constant TAX_BPS = 100; // 1%
     uint256 public constant BPS = 10_000;
 
@@ -32,7 +32,7 @@ contract StockPackzToken is ERC20, AccessControl {
     error ZeroAddress();
 
     constructor(uint256 initialSupply, address admin, address _rewardsVault, address _jackpotSupportVault)
-        ERC20("StockPackz", "PACKZ")
+        ERC20("StackStock", "PACKZ")
     {
         if (_rewardsVault == address(0) || _jackpotSupportVault == address(0)) revert ZeroAddress();
         packRewardsVault = _rewardsVault;

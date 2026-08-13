@@ -2,7 +2,7 @@
 pragma solidity ^0.8.26;
 
 /// @title IStockSwapAdapter
-/// @notice Routing abstraction between StockPackz and any concrete swap venue
+/// @notice Routing abstraction between StackStock and any concrete swap venue
 ///         (Uniswap v4 today, anything else tomorrow). The core contract must
 ///         only ever depend on this interface.
 interface IStockSwapAdapter {

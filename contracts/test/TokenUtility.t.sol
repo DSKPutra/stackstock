@@ -2,8 +2,8 @@
 pragma solidity ^0.8.26;
 
 import {BaseTest} from "./Base.t.sol";
-import {StockPackz} from "../src/StockPackz.sol";
-import {StockPackzToken} from "../src/token/StockPackzToken.sol";
+import {StackStock} from "../src/StackStock.sol";
+import {StackStockToken} from "../src/token/StackStockToken.sol";
 import {MembershipTierManager} from "../src/membership/MembershipTierManager.sol";
 import {PackRewardsVault} from "../src/vaults/PackRewardsVault.sol";
 import {XPManager} from "../src/progression/XPManager.sol";
@@ -17,7 +17,7 @@ import {ITokenPriceAdapter} from "../src/interfaces/ITokenPriceAdapter.sol";
 import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
 contract TokenUtilityTest is BaseTest {
-    StockPackzToken packz;
+    StackStockToken packz;
     MembershipTierManager tierManager;
     PackRewardsVault rewardsVault;
     XPManager xp;
@@ -32,7 +32,7 @@ contract TokenUtilityTest is BaseTest {
     function setUp() public override {
         super.setUp();
 
-        packz = new StockPackzToken(10_000_000e18, admin, makeAddr("rewardsTax"), makeAddr("jackpotTax"));
+        packz = new StackStockToken(10_000_000e18, admin, makeAddr("rewardsTax"), makeAddr("jackpotTax"));
         tierManager = new MembershipTierManager(IERC20(address(packz)), admin);
         rewardsVault = new PackRewardsVault(IERC20(address(usdg)), admin);
         xp = new XPManager(admin);
@@ -55,7 +55,7 @@ contract TokenUtilityTest is BaseTest {
         vm.stopPrank();
 
         // Give the pack XP so awards flow.
-        StockPackz.PackConfig memory config = _packConfig();
+        StackStock.PackConfig memory config = _packConfig();
         config.baseXP = 100;
         vm.prank(admin);
         core.updatePack(aiPackId, config, _aiPackOptions());
@@ -93,7 +93,7 @@ contract TokenUtilityTest is BaseTest {
         assertEq(packz.balanceOf(alice), packzBefore - EXPECTED_BURN);
         assertEq(packz.balanceOf(core.BURN_ADDRESS()), EXPECTED_BURN);
         assertEq(core.totalTokensBurned(), EXPECTED_BURN);
-        assertEq(uint8(_status(openingId)), uint8(StockPackz.OpeningStatus.Settled));
+        assertEq(uint8(_status(openingId)), uint8(StackStock.OpeningStatus.Settled));
     }
 
     function test_nonHolder_pays1020_noBurn() public {
@@ -106,7 +106,7 @@ contract TokenUtilityTest is BaseTest {
         assertEq(core.treasuryAccrued(), FEE + 0.2e6);
         assertEq(core.jackpotBalance(), JACKPOT_CUT);
         assertEq(nvda.balanceOf(alice), EXPECTED_OUT);
-        assertEq(uint8(_status(openingId)), uint8(StockPackz.OpeningStatus.Settled));
+        assertEq(uint8(_status(openingId)), uint8(StackStock.OpeningStatus.Settled));
     }
 
     function test_burnAmount_tracksOraclePrice() public {
@@ -223,7 +223,7 @@ contract TokenUtilityTest is BaseTest {
         // Retry that settles DOES award.
         adapter.setFailSwaps(false);
         uint256 second = _openAndFulfill(alice, 0, 999);
-        assertEq(uint8(_status(second)), uint8(StockPackz.OpeningStatus.Settled));
+        assertEq(uint8(_status(second)), uint8(StackStock.OpeningStatus.Settled));
         assertEq(xp.lifetimeXP(alice), 100); // Basic 1.00x
     }
 
@@ -253,7 +253,7 @@ contract TokenUtilityTest is BaseTest {
     // ------------------------------------------------------ founder pack
 
     function _createFounderPack() internal returns (uint256 packId) {
-        StockPackz.PackConfig memory config = _packConfig();
+        StackStock.PackConfig memory config = _packConfig();
         config.name = "AI Founder Pack";
         config.baseXP = 500;
         config.minTier = 3; // Gold+
@@ -276,7 +276,7 @@ contract TokenUtilityTest is BaseTest {
         _levelUp(alice, 2_000); // level ok, tier Basic
 
         vm.prank(alice);
-        vm.expectRevert(StockPackz.TierTooLow.selector);
+        vm.expectRevert(StackStock.TierTooLow.selector);
         core.openPack(packId, 100, 0);
     }
 
@@ -285,7 +285,7 @@ contract TokenUtilityTest is BaseTest {
         _giveTier(alice, 50_000e18); // Gold, level 1
 
         vm.prank(alice);
-        vm.expectRevert(StockPackz.LevelTooLow.selector);
+        vm.expectRevert(StackStock.LevelTooLow.selector);
         core.openPack(packId, 100, 0);
     }
 
@@ -302,7 +302,7 @@ contract TokenUtilityTest is BaseTest {
 
         // Same wallet, same day → blocked.
         vm.prank(alice);
-        vm.expectRevert(StockPackz.DailyLimitReached.selector);
+        vm.expectRevert(StackStock.DailyLimitReached.selector);
         core.openPack(packId, 100, 0);
 
         // Next day is fine — but consumes the global cap (2).
@@ -311,7 +311,7 @@ contract TokenUtilityTest is BaseTest {
         core.openPack(packId, 100, 0);
 
         vm.prank(bob);
-        vm.expectRevert(StockPackz.SupplyCapReached.selector);
+        vm.expectRevert(StackStock.SupplyCapReached.selector);
         core.openPack(packId, 100, 0);
     }
 
@@ -342,7 +342,7 @@ contract TokenUtilityTest is BaseTest {
         uint256 openingId = _openAndFulfill(alice, 0, 999);
 
         assertEq(usdg.balanceOf(alice), usdgBefore - 10e6); // plain 10.00
-        assertEq(uint8(_status(openingId)), uint8(StockPackz.OpeningStatus.Settled));
+        assertEq(uint8(_status(openingId)), uint8(StackStock.OpeningStatus.Settled));
         assertEq(nvda.balanceOf(alice), EXPECTED_OUT);
     }
 

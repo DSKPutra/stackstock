@@ -6,7 +6,7 @@ import type {
   Opening,
   OpenPackParams,
   Pack,
-  StockPackzClientConfig,
+  StackStockClientConfig,
   XPProfile,
 } from "./types.js";
 import type { Address } from "viem";
@@ -14,10 +14,10 @@ import type { Address } from "viem";
 const WEIGHT_DENOMINATOR = 10_000;
 
 /**
- * Typed client for the StockPackz protocol.
+ * Typed client for the StackStock protocol.
  *
  * ```ts
- * const client = new StockPackzClient({ chain: "robinhood" });
+ * const client = new StackStockClient({ chain: "robinhood" });
  * const pack = await client.packs.get(1n);
  * const odds = await client.packs.odds(1n);
  * ```
@@ -25,11 +25,11 @@ const WEIGHT_DENOMINATOR = 10_000;
  * Reads are safe anywhere; writes require a connected wallet client.
  * All amounts are bigints in the token's native decimals (USDG: 6).
  */
-export class StockPackzClient {
-  readonly config: StockPackzClientConfig;
+export class StackStockClient {
+  readonly config: StackStockClientConfig;
   readonly addresses: ContractAddresses;
 
-  constructor(config: StockPackzClientConfig) {
+  constructor(config: StackStockClientConfig) {
     this.config = config;
     this.addresses = {
       ...DEFAULT_ADDRESSES[config.chain === "robinhood" ? "robinhood" : "localhost"],
@@ -129,8 +129,8 @@ export class StockPackzClient {
 export class NotDeployedError extends Error {
   constructor(method: string, params?: unknown) {
     super(
-      `StockPackz SDK: \`${method}\` is not wired yet — protocol deployment addresses are pending. ` +
-        `Track progress at https://github.com/stockpackz/stockpackz/blob/main/ROADMAP.md` +
+      `StackStock SDK: \`${method}\` is not wired yet — protocol deployment addresses are pending. ` +
+        `Track progress at https://github.com/DSKPutra/stackstock/blob/main/ROADMAP.md` +
         (params ? ` (params: ${JSON.stringify(params, (_, v) => (typeof v === "bigint" ? v.toString() : v))})` : "")
     );
     this.name = "NotDeployedError";
@@ -141,7 +141,7 @@ const ZERO = "0x0000000000000000000000000000000000000000" as Address;
 
 const DEFAULT_ADDRESSES: Record<"robinhood" | "localhost", ContractAddresses> = {
   robinhood: {
-    stockPackz: ZERO,
+    stackStock: ZERO,
     usdg: ZERO,
     membershipTiers: ZERO,
     xpManager: ZERO,
@@ -150,7 +150,7 @@ const DEFAULT_ADDRESSES: Record<"robinhood" | "localhost", ContractAddresses> = 
     token: ZERO,
   },
   localhost: {
-    stockPackz: ZERO,
+    stackStock: ZERO,
     usdg: ZERO,
     membershipTiers: ZERO,
     xpManager: ZERO,

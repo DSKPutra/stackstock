@@ -7,7 +7,7 @@ export const dynamic = "force-dynamic";
 
 /**
  * Real on-chain activity feed. Reads StockPurchased and JackpotWon events
- * from the live StockPackz contract — every entry shown is a settled,
+ * from the live StackStock contract — every entry shown is a settled,
  * verifiable opening.
  */
 
@@ -37,7 +37,7 @@ let cache: { at: number; body: unknown } | null = null;
 const CACHE_MS = 4_000;
 
 export async function GET(request: Request) {
-  const core = process.env.NEXT_PUBLIC_STOCKPACKZ_ADDRESS as Hex | undefined;
+  const core = process.env.NEXT_PUBLIC_STACKSTOCK_ADDRESS as Hex | undefined;
   if (!core) return NextResponse.json({ events: [] });
 
   if (cache && Date.now() - cache.at < CACHE_MS) {

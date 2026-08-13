@@ -1,6 +1,6 @@
 import type { Address, Hex } from "viem";
 
-/** Opening lifecycle — mirrors `StockPackz.OpeningStatus` on-chain. */
+/** Opening lifecycle — mirrors `StackStock.OpeningStatus` on-chain. */
 export type OpeningStatus =
   | "none"
   | "created"
@@ -110,7 +110,7 @@ export interface OpenPackParams {
   creditAmount?: bigint;
 }
 
-export interface StockPackzClientConfig {
+export interface StackStockClientConfig {
   /** Named chain preset or a custom RPC URL. */
   chain: "robinhood" | "localhost" | (string & {});
   /** Override contract addresses (required for custom chains). */
@@ -118,7 +118,7 @@ export interface StockPackzClientConfig {
 }
 
 export interface ContractAddresses {
-  stockPackz: Address;
+  stackStock: Address;
   usdg: Address;
   membershipTiers: Address;
   xpManager: Address;

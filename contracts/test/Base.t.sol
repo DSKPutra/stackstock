@@ -3,7 +3,7 @@ pragma solidity ^0.8.26;
 
 import {Test} from "forge-std/Test.sol";
 
-import {StockPackz} from "../src/StockPackz.sol";
+import {StackStock} from "../src/StackStock.sol";
 import {MockERC20} from "../src/mocks/MockERC20.sol";
 import {MockRandomnessCoordinator} from "../src/mocks/MockRandomnessCoordinator.sol";
 import {MockSwapAdapter} from "../src/mocks/MockSwapAdapter.sol";
@@ -32,7 +32,7 @@ abstract contract BaseTest is Test {
     MockERC20 usdg;
     MockRandomnessCoordinator coordinator;
     MockSwapAdapter adapter;
-    StockPackz core;
+    StackStock core;
 
     MockERC20 nvda;
     MockERC20 amd;
@@ -51,7 +51,7 @@ abstract contract BaseTest is Test {
         usdg = new MockERC20("USDG", "USDG", 6);
         coordinator = new MockRandomnessCoordinator();
         adapter = new MockSwapAdapter();
-        core = new StockPackz(
+        core = new StackStock(
             IERC20(address(usdg)),
             IRandomnessCoordinator(address(coordinator)),
             IStockSwapAdapter(address(adapter)),
@@ -81,8 +81,8 @@ abstract contract BaseTest is Test {
         adapter.setPrice(address(token), ADAPTER_PRICE);
     }
 
-    function _aiPackOptions() internal view returns (StockPackz.StockOption[] memory options) {
-        options = new StockPackz.StockOption[](7);
+    function _aiPackOptions() internal view returns (StackStock.StockOption[] memory options) {
+        options = new StackStock.StockOption[](7);
         options[0] = _option(address(nvda), 2_000);
         options[1] = _option(address(amd), 2_000);
         options[2] = _option(address(msft), 1_500);
@@ -92,8 +92,8 @@ abstract contract BaseTest is Test {
         options[6] = _option(address(pltr), 1_000);
     }
 
-    function _option(address token, uint32 weight) internal pure returns (StockPackz.StockOption memory) {
-        return StockPackz.StockOption({
+    function _option(address token, uint32 weight) internal pure returns (StackStock.StockOption memory) {
+        return StackStock.StockOption({
             token: token,
             weight: weight,
             maxSlippageBps: 300,
@@ -102,7 +102,7 @@ abstract contract BaseTest is Test {
         });
     }
 
-    function _packConfig() internal pure returns (StockPackz.PackConfig memory config) {
+    function _packConfig() internal pure returns (StackStock.PackConfig memory config) {
         config.name = "AI Pack";
         config.description = "The intelligence economy";
         config.imageURI = "ipfs://ai-pack";
@@ -150,7 +150,7 @@ abstract contract BaseTest is Test {
     // jackpotWinner, jackpotPayout, optionsHash, createdAt, subsidyAmount,
     // baseXP, xpMultiplierBps, tierId, status
 
-    function _status(uint256 openingId) internal view returns (StockPackz.OpeningStatus status) {
+    function _status(uint256 openingId) internal view returns (StackStock.OpeningStatus status) {
         (,,,,,,,,,,,,,,,,,,,,,,,,, status) = core.openings(openingId);
     }
 

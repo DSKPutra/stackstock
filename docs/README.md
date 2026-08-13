@@ -1,6 +1,6 @@
-# Stockpackz Documentation
+# Stackstock Documentation
 
-Welcome to the **Stockpackz** documentation — a premium pack-opening experience for real tokenized equities on Robinhood Chain.
+Welcome to the **Stackstock** documentation — a premium pack-opening experience for real tokenized equities on Robinhood Chain.
 
 ## Documentation Index
 
@@ -27,7 +27,7 @@ npm run dev
 
 ## Key Facts
 
-- **Product:** Stockpackz
+- **Product:** Stackstock
 - **Chain:** Robinhood Chain (chain ID `4663`)
 - **Tokens:** ERC-20 / ERC-8056 stock tokens with Chainlink price feeds
 - **Settlement:** Uniswap v4 swap into the user's own wallet (production design)
